@@ -98,7 +98,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-accent text-white hover:bg-accent-dark transition-all duration-200"
                 >
                   Get in Touch
                 </Link>
