@@ -49,7 +49,7 @@ export default function Header() {
               <Link
                 key={path}
                 to={path}
-                className="relative font-mono text-sm uppercase tracking-wider transition-colors duration-200 hover:text-black/70"
+                className="relative font-mono text-lg uppercase tracking-wider transition-colors duration-200 hover:text-black/70"
               >
                 <span className={isActive(path) ? 'font-semibold' : 'font-medium'}>
                   {label}

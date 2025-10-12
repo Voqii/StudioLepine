@@ -180,7 +180,7 @@ export default function About() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 to="/contact"
-                className="inline-block px-8 py-4 bg-black text-white hover:bg-black/80 transition-colors text-base font-medium"
+                className="inline-block px-6 py-3 bg-black text-white hover:bg-black/80 transition-colors"
               >
                 Get in Touch
               </Link>
