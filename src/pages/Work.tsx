@@ -5,22 +5,163 @@ import PageTransition from '../components/PageTransition';
 import { staggerContainer, staggerItem } from '../utils/animations';
 
 const projects: Project[] = [
+  // Web Development Projects
   {
-    id: 'fsm-app',
-    title: 'FSM Field Service Management',
+    id: 'studio-lepine-website',
+    title: 'Studio Lepine Portfolio',
     category: 'digital',
-    subcategory: 'Development',
-    description: 'Full-stack field service management solution with React web application, Swift iOS app, and Supabase backend. Features real-time synchronization, offline support, and comprehensive service tracking.',
-    tags: ['React', 'TypeScript', 'Swift', 'Supabase', 'iOS', 'Real-time'],
+    subcategory: 'Web Development',
+    description: 'Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features responsive design, smooth animations with Framer Motion, and optimized performance.',
+    tags: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
+    imageUrl: '/images/projects/web-dev/studio-lepine-home-page.png',
   },
   {
-    id: 'palliative-booking',
-    title: 'Palliative Care Booking System',
+    id: 'learn-quickly-network',
+    title: 'Learn Quickly Network',
+    category: 'digital',
+    subcategory: 'Web Development',
+    description: 'Educational platform designed for rapid skill acquisition and knowledge sharing. Clean, user-friendly interface focused on learning efficiency.',
+    tags: ['React', 'Education', 'UI/UX', 'Web'],
+    imageUrl: '/images/projects/web-dev/learn-quickly-network-home-page.png',
+  },
+  {
+    id: 'scwcs-website',
+    title: 'SCWCS Window Cleaning',
+    category: 'digital',
+    subcategory: 'Web Development',
+    description: 'Professional service website for Saskatchewan window cleaning company. Features booking integration, service showcase, and responsive design.',
+    tags: ['Web', 'Business', 'Responsive', 'SEO'],
+    imageUrl: '/images/projects/web-dev/scwcs-window-cleaning-home-page.png',
+  },
+
+  // FSM App Projects
+  {
+    id: 'sergio-fsm-app',
+    title: 'Sergio FSM - Field Service Management',
+    category: 'digital',
+    subcategory: 'Mobile & Web Development',
+    description: 'Full-stack field service management solution with React web application, Swift iOS app, and Supabase backend. Features real-time synchronization, offline support, and comprehensive service tracking.',
+    tags: ['React', 'TypeScript', 'Swift', 'Supabase', 'iOS', 'Real-time'],
+    imageUrl: '/images/projects/fsm-app/sergio-home-page-react.png',
+  },
+
+  // Palliative Care Booking
+  {
+    id: 'silverwings-palliative-booking',
+    title: 'Silverwings Palliative Care Booking',
     category: 'digital',
     subcategory: 'Community Impact',
     description: 'Pro bono scheduling and coordination platform designed for palliative care services. Simplifies appointment management and improves care coordination for patients and healthcare providers.',
-    tags: ['React', 'Community', 'Healthcare', 'Scheduling'],
+    tags: ['React', 'Community', 'Healthcare', 'Scheduling', 'SimplyBook'],
+    imageUrl: '/images/projects/palliative-booking/silverwings-simplybook.png',
   },
+
+  // Logos and Business Cards
+  {
+    id: 'studio-lepine-logo',
+    title: 'Studio Lepine Branding',
+    category: 'digital',
+    subcategory: 'Logo & Brand Design',
+    description: 'Professional logo and brand identity for Studio Lepine. Clean, modern design that represents the intersection of digital and physical craftsmanship.',
+    tags: ['Logo Design', 'Branding', 'Vector', 'Identity'],
+    imageUrl: '/images/projects/logos-and-business-cards/Studio-Lepine-Logo-Trans-Black.png',
+  },
+  {
+    id: 'snow-away-branding',
+    title: 'Snow Away Complete Branding',
+    category: 'digital',
+    subcategory: 'Logo & Brand Design',
+    description: 'Comprehensive branding package including logo design and business card layout for snow removal service. Bold, professional aesthetic with seasonal color palette.',
+    tags: ['Logo Design', 'Business Cards', 'Branding', 'Print'],
+    imageUrl: '/images/projects/logos-and-business-cards/snow-away-high-resolution-logo-transparent.png',
+  },
+  {
+    id: 'sergio-app-logo',
+    title: 'Sergio App iOS Icon',
+    category: 'digital',
+    subcategory: 'Logo & App Design',
+    description: 'iOS app icon design for Sergio field service management application. Modern, recognizable design optimized for mobile platforms.',
+    tags: ['App Icon', 'iOS', 'Logo Design', 'Mobile'],
+    imageUrl: '/images/projects/logos-and-business-cards/sergio-app-logo-ios.png',
+  },
+  {
+    id: 'scwcs-logo',
+    title: 'SCWCS Logo Design',
+    category: 'digital',
+    subcategory: 'Logo & Brand Design',
+    description: 'Professional logo for Saskatchewan window cleaning company. Clean design emphasizing clarity and professionalism.',
+    tags: ['Logo Design', 'Branding', 'Service Industry'],
+    imageUrl: '/images/projects/logos-and-business-cards/scwcs-logo-design.png',
+  },
+  {
+    id: 'learn-tech-quickly-logo',
+    title: 'Learn Tech Quickly Logo',
+    category: 'digital',
+    subcategory: 'Logo & Brand Design',
+    description: 'Educational technology brand logo combining modern design with approachable aesthetics for learning platform.',
+    tags: ['Logo Design', 'Education', 'Tech', 'Branding'],
+    imageUrl: '/images/projects/logos-and-business-cards/learn-tech-quickly-logo.png',
+  },
+  {
+    id: 'thecalmshell-logo',
+    title: 'TheCalmShell Logo',
+    category: 'digital',
+    subcategory: 'Logo & Brand Design',
+    description: 'Minimalist logo design for wellness and mindfulness brand. Soft, calming aesthetic with shell motif.',
+    tags: ['Logo Design', 'Wellness', 'Minimalist', 'Branding'],
+    imageUrl: '/images/projects/logos-and-business-cards/thecalmshell-logo.png',
+  },
+
+  // Graphic Design Projects
+  {
+    id: 'scwcs-discount-ad',
+    title: 'SCWCS Promotional Advertisement',
+    category: 'digital',
+    subcategory: 'Graphic Design',
+    description: 'Eye-catching discount advertisement for window cleaning services. Bold typography and clear call-to-action.',
+    tags: ['Graphic Design', 'Marketing', 'Advertising', 'Print'],
+    imageUrl: '/images/projects/graphic-design/scwcs-discount-advert.png',
+  },
+  {
+    id: 'scwcs-door-hanger',
+    title: 'SCWCS Door Hanger Design',
+    category: 'digital',
+    subcategory: 'Graphic Design',
+    description: 'Direct marketing door hanger design for local service promotion. Informative layout with contact details and service highlights.',
+    tags: ['Graphic Design', 'Print', 'Marketing', 'Local'],
+    imageUrl: '/images/projects/graphic-design/scwcs-door-hanger-design.png',
+  },
+  {
+    id: 'scwcs-social-banner',
+    title: 'SCWCS Social Media Banner',
+    category: 'digital',
+    subcategory: 'Graphic Design',
+    description: 'Professional social media banner design for business profiles. Consistent branding across digital platforms.',
+    tags: ['Social Media', 'Graphic Design', 'Digital', 'Branding'],
+    imageUrl: '/images/projects/graphic-design/scwcs-social-media-banner.png',
+  },
+  {
+    id: 'travel-agent-ad',
+    title: 'Travel Agency Advertisement',
+    category: 'digital',
+    subcategory: 'Graphic Design',
+    description: 'Vibrant travel agency promotional design with aspirational imagery and compelling copy.',
+    tags: ['Graphic Design', 'Travel', 'Advertising', 'Marketing'],
+    imageUrl: '/images/projects/graphic-design/travel-agent-ad.png',
+  },
+
+  // Woodworking Projects
+  {
+    id: 'cedar-planter',
+    title: 'Custom Cedar Planter',
+    category: 'physical',
+    subcategory: 'Custom Woodworking',
+    description: 'Handcrafted cedar planter box featuring traditional joinery and weather-resistant construction. Designed for outdoor durability while maintaining aesthetic appeal.',
+    tags: ['Woodworking', 'Cedar', 'Outdoor', 'Craftsmanship'],
+    imageUrl: '/images/projects/custom-woodworking/cedar-planter.png',
+  },
+
+  // Placeholder for future categories
   {
     id: 'security-research',
     title: 'Security Research & Bug Bounties',
@@ -28,14 +169,6 @@ const projects: Project[] = [
     subcategory: 'Security',
     description: 'Active participation in bug bounty programs and responsible vulnerability disclosure. Focus on web application security, authentication systems, and API security.',
     tags: ['Security', 'Research', 'Bug Bounties', 'Pentesting'],
-  },
-  {
-    id: 'custom-woodworking',
-    title: 'Custom Woodworking',
-    category: 'physical',
-    subcategory: 'Craftsmanship',
-    description: 'Handcrafted furniture and custom woodworking projects. Each piece combines traditional joinery techniques with modern design aesthetics and functional engineering.',
-    tags: ['Woodworking', 'Design', 'Craftsmanship', 'Furniture'],
   },
   {
     id: 'systems-engineering',
@@ -120,38 +253,52 @@ export default function Work() {
                 key={project.id}
                 variants={staggerItem}
                 custom={index}
-                className="border border-black/10 p-8 hover:border-black/30 transition-all duration-300 group cursor-pointer"
+                className="border border-black/10 hover:border-black/30 transition-all duration-300 group cursor-pointer overflow-hidden"
                 whileHover={{
                   y: -4,
                   boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
                 }}
                 layout
               >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-black/50">
-                    {project.subcategory}
-                  </span>
-                  <span className="text-xs uppercase tracking-wider text-black/50">
-                    {project.category}
-                  </span>
-                </div>
+                {/* Project Image */}
+                {project.imageUrl && (
+                  <div className="w-full h-48 bg-black/5 overflow-hidden">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
 
-                <h3 className="text-2xl font-semibold mb-3 group-hover:text-black/80 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-black/70 mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-1 bg-black/5 text-black/70 group-hover:bg-black/10 transition-colors"
-                    >
-                      {tag}
+                {/* Project Content */}
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="text-xs uppercase tracking-wider text-black/50">
+                      {project.subcategory}
                     </span>
-                  ))}
+                    <span className="text-xs uppercase tracking-wider text-black/50">
+                      {project.category}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-black/80 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-black/70 mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-1 bg-black/5 text-black/70 group-hover:bg-black/10 transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
