@@ -90,7 +90,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/work"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-accent text-white hover:bg-accent-dark transition-colors duration-200"
+                  className="inline-block font-mono text-base font-medium uppercase tracking-wider px-10 py-5 bg-accent text-white hover:bg-accent-dark transition-colors duration-200"
                 >
                   View Work
                 </Link>
@@ -98,7 +98,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-accent text-white hover:bg-accent-dark transition-all duration-200"
+                  className="inline-block font-mono text-base font-medium uppercase tracking-wider px-10 py-5 bg-accent text-white hover:bg-accent-dark transition-all duration-200"
                 >
                   Get in Touch
                 </Link>
