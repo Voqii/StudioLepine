@@ -22,6 +22,12 @@ export default {
           DEFAULT: '#6B7280',      // Steel gray - industrial/technical
           light: '#9CA3AF',
           dark: '#4B5563',
+        },
+        sky: {
+          DEFAULT: '#87CEEB',      // Sky blue - creative/thoughtful
+          light: '#B0D9F0',
+          dark: '#6BB6D9',
+          muted: '#A8D5E6',
         }
       },
       fontFamily: {

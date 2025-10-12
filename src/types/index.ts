@@ -8,3 +8,13 @@ export interface Project {
   featured?: boolean;
   imageUrl?: string;
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content: string;
+  tags: string[];
+  readTime?: string;
+}
