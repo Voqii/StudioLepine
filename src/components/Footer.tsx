@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -5,8 +7,17 @@ export default function Footer() {
     <footer className="border-t border-black/10 mt-auto">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-sm text-black/60">
-            © {currentYear} Studio Lepine. Saskatchewan, Canada.
+          <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-black/60">
+            <span>© {currentYear} Studio Lepine. Saskatchewan, Canada.</span>
+            <div className="flex items-center gap-4">
+              <Link to="/privacy" className="hover:text-accent transition-colors">
+                Privacy Policy
+              </Link>
+              <span className="text-black/30">•</span>
+              <Link to="/terms" className="hover:text-accent transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
 
           <div className="flex items-center gap-6">
