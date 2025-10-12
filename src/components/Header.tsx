@@ -27,14 +27,14 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <nav className="max-w-6xl mx-auto px-6 py-6">
+      <nav className="max-w-6xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-4 group">
             <motion.img
               src="/studiolepinelogo.png"
               alt="Studio Lepine"
-              className="h-[140px] w-[140px]"
+              className="h-[119px] w-[119px]"
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ duration: 0.2 }}
             />
@@ -56,7 +56,7 @@ export default function Header() {
                 </span>
                 {isActive(path) && (
                   <motion.div
-                    className="absolute -bottom-[25px] left-0 right-0 h-[2px] bg-accent-dark"
+                    className="absolute -bottom-[13px] left-0 right-0 h-[2px] bg-accent-dark"
                     layoutId="activeNav"
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   />
