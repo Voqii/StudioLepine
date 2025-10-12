@@ -104,7 +104,7 @@ I reviewed everything it generated, made small tweaks, and shipped. The code is 
 <p><u>Here's what I mean:</u> I never sat down and memorized JavaScript syntax. I never took a CS course. I can't write a function from scratch without looking up the structure first.
 But I understand code. I can read it, debug it, fix syntax errors, understand logic flow, and most importantly, I know what I want the code to do. I just use AI to translate my intent into actual syntax.</p>
 <p>On October 1st (first day of my Cursor Pro billing cycle), I burned through 45 million tokens in about 12 hours building a field service management app. Two separate repos (React web app + Swift iOS app), both with Supabase backends, real-time sync working, about 40,000 lines of code generated. I was essentially running two AI agents simultaneously, having them scaffold entire features while I reviewed, tested, and iterated.
-That's not "traditional" coding. But the result is the same: I'm shipping production-ready software that solves real problems for my $200k/year window cleaning business. The leverage is insane. Pre-AI, I'd need to hire contractors for $50k-100k to build what I'm building myself in weekends. Now I just need to be good at systems thinking, problem decomposition, and knowing what to ask for.</p>
+That's not "traditional" coding. But the result is the same: I'm shipping production-ready software that solves real problems for my high revenue window cleaning business. The leverage is insane. Pre-AI, I'd need to hire contractors for $50k-100k to build what I'm building myself in weekends. Now I just need to be good at systems thinking, problem decomposition, and knowing what to ask for.</p>
 
 <u>What I'm Actually Building This For</u>
 
