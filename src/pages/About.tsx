@@ -44,6 +44,22 @@ export default function About() {
             </div>
           </motion.section>
 
+          {/* Photo */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="max-w-2xl mx-auto">
+              <img
+                src="/self.jpeg"
+                alt="Portrait"
+                className="w-full h-auto"
+              />
+            </div>
+          </motion.section>
+
           {/* Approach */}
           <motion.section
             className="border-t border-black/10 pt-12"
