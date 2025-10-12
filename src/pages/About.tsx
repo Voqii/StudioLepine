@@ -51,7 +51,7 @@ export default function About() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-md mx-auto">
               <img
                 src="/self.jpeg"
                 alt="Portrait"

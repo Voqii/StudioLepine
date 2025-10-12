@@ -19,6 +19,27 @@ export default function BlogPost() {
     });
   };
 
+  // Auto-format content: convert line breaks to paragraphs
+  const formatContent = (content: string) => {
+    // Split by double line breaks to get paragraphs
+    const paragraphs = content.split('\n\n');
+
+    return paragraphs
+      .map((para) => {
+        const trimmed = para.trim();
+        if (!trimmed) return '';
+
+        // If it already has HTML tags, return as is
+        if (trimmed.startsWith('<')) {
+          return trimmed;
+        }
+
+        // Otherwise wrap in <p> tag
+        return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+      })
+      .join('\n');
+  };
+
   return (
     <PageTransition>
       <article className="max-w-3xl mx-auto px-6 py-16">
@@ -88,7 +109,7 @@ export default function BlogPost() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div dangerouslySetInnerHTML={{ __html: formatContent(post.content) }} />
         </motion.div>
 
         {/* Back button at bottom */}
