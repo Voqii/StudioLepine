@@ -58,7 +58,7 @@ export default function MobileMenu() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/30 z-[100] md:hidden"
+              className="fixed inset-0 bg-black/30 z-[9998] md:hidden"
               onClick={closeMenu}
             />
 
