@@ -253,3 +253,120 @@ a[class*="px-6"] {
   border-radius: 0.5rem;
   margin: 1.5rem 0;
 }
+
+/* Print Styles */
+@media print {
+  /* Hide unnecessary elements when printing */
+  header,
+  footer,
+  nav,
+  .mobile-menu,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Optimize body for print */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Remove background textures for print */
+  body::before {
+    display: none !important;
+  }
+
+  /* Ensure content fits on page */
+  .max-w-6xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .max-w-2xl {
+    max-width: 100% !important;
+  }
+
+  /* Remove animations and transitions */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Better page breaks */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  p, li {
+    page-break-inside: avoid;
+  }
+
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  /* Add contact info to footer for print */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Print-friendly links */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  /* Ensure proper spacing */
+  section {
+    margin-bottom: 2rem;
+  }
+
+  /* Project cards */
+  article,
+  .project-card {
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Blog content */
+  .blog-content {
+    font-size: 11pt;
+  }
+
+  .blog-content h1 {
+    font-size: 18pt;
+    margin-top: 0;
+  }
+
+  .blog-content h2 {
+    font-size: 16pt;
+  }
+
+  .blog-content h3 {
+    font-size: 14pt;
+  }
+
+  .blog-content code,
+  .blog-content pre {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #ddd;
+  }
+
+  /* Contact info */
+  .contact-info {
+    font-weight: bold;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #333;
+  }
+}

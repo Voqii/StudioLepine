@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { blogPosts } from '../data/blogPosts';
 
 export default function BlogPost() {
@@ -42,6 +43,7 @@ export default function BlogPost() {
 
   return (
     <PageTransition>
+      <Breadcrumbs />
       <article className="max-w-3xl mx-auto px-6 py-16">
         {/* Back button */}
         <motion.div
