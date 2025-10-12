@@ -8,8 +8,20 @@ export default {
     extend: {
       colors: {
         accent: {
-          DEFAULT: '#000000',
-          light: '#333333',
+          DEFAULT: '#8B4513',      // Saddle brown - earthy, craftsmanship
+          light: '#A0826D',        // Lighter warm brown
+          dark: '#654321',         // Dark brown
+          muted: '#B8997A',        // Very muted tan
+        },
+        sage: {
+          DEFAULT: '#7A8B7A',      // Muted sage green - technical/natural
+          light: '#9DAF9D',
+          dark: '#5F6F5F',
+        },
+        steel: {
+          DEFAULT: '#6B7280',      // Steel gray - industrial/technical
+          light: '#9CA3AF',
+          dark: '#4B5563',
         }
       },
       fontFamily: {

@@ -61,10 +61,11 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              I solve problems by building things
+              I solve problems by{' '}
+              <span className="text-accent-dark">building things</span>
             </motion.h1>
             <motion.p
-              className="font-mono text-xl md:text-2xl text-black/70 mb-10 leading-snug"
+              className="font-mono text-xl md:text-2xl text-steel mb-10 leading-snug"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -129,19 +130,25 @@ export default function Home() {
               <motion.div
                 key={project.id}
                 variants={staggerItem}
-                className="border border-black/10 p-10 hover:border-black/30 transition-all duration-300 group cursor-pointer"
-                whileHover={{ y: -4, boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}
+                className={`border-2 p-10 transition-all duration-300 group cursor-pointer ${
+                  project.category === 'digital'
+                    ? 'border-steel-light/30 hover:border-steel'
+                    : 'border-accent-light/30 hover:border-accent'
+                }`}
+                whileHover={{ y: -4, boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
               >
                 <div className="flex items-start justify-between mb-6">
-                  <span className="font-mono text-xs uppercase tracking-widest text-black/50">
+                  <span className={`font-mono text-xs uppercase tracking-widest font-semibold ${
+                    project.category === 'digital' ? 'text-steel' : 'text-accent'
+                  }`}>
                     {project.subcategory}
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-widest text-black/50">
+                  <span className="font-mono text-xs uppercase tracking-widest text-black/40">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="font-mono text-2xl font-semibold mb-4 leading-tight tracking-tight group-hover:text-black/80 transition-colors">
+                <h3 className="font-mono text-2xl font-semibold mb-4 leading-tight tracking-tight group-hover:opacity-80 transition-opacity">
                   {project.title}
                 </h3>
                 <p className="font-sans text-base text-black/70 mb-6 leading-relaxed">{project.description}</p>
@@ -150,7 +157,11 @@ export default function Home() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="font-sans text-xs px-3 py-1.5 bg-black/5 text-black/70 group-hover:bg-black/10 transition-colors"
+                      className={`font-sans text-xs px-3 py-1.5 transition-colors ${
+                        project.category === 'digital'
+                          ? 'bg-steel/10 text-steel-dark group-hover:bg-steel/20'
+                          : 'bg-accent/10 text-accent-dark group-hover:bg-accent/20'
+                      }`}
                     >
                       {tag}
                     </span>

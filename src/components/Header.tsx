@@ -52,7 +52,7 @@ export default function Header() {
                 </span>
                 {isActive(path) && (
                   <motion.div
-                    className="absolute -bottom-[25px] left-0 right-0 h-[2px] bg-black"
+                    className="absolute -bottom-[25px] left-0 right-0 h-[2px] bg-accent-dark"
                     layoutId="activeNav"
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   />
