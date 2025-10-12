@@ -56,7 +56,7 @@ export default function Home() {
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+              className="font-mono text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -64,7 +64,7 @@ export default function Home() {
               I solve problems by building things
             </motion.h1>
             <motion.p
-              className="text-xl md:text-2xl text-black/70 mb-8"
+              className="font-mono text-xl md:text-2xl text-black/70 mb-10 leading-snug"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -72,7 +72,7 @@ export default function Home() {
               In code, in pixels, and with my hands.
             </motion.p>
             <motion.p
-              className="text-lg text-black/60 mb-8 leading-relaxed"
+              className="font-sans text-lg text-black/60 mb-10 leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -89,7 +89,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/work"
-                  className="inline-block px-6 py-3 bg-black text-white hover:bg-black/80 transition-colors duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-black text-white hover:bg-black/80 transition-colors duration-200"
                 >
                   View Work
                 </Link>
@@ -97,7 +97,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-block px-6 py-3 border border-black hover:bg-black hover:text-white transition-all duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-black hover:bg-black hover:text-white transition-all duration-200"
                 >
                   Get in Touch
                 </Link>
@@ -109,7 +109,7 @@ export default function Home() {
         {/* Featured Projects */}
         <section className="max-w-6xl mx-auto px-6 py-16 border-t border-black/10">
           <motion.h2
-            className="text-3xl font-bold mb-12"
+            className="font-mono text-4xl font-bold mb-16 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -129,28 +129,28 @@ export default function Home() {
               <motion.div
                 key={project.id}
                 variants={staggerItem}
-                className="border border-black/10 p-8 hover:border-black/30 transition-all duration-300 group cursor-pointer"
+                className="border border-black/10 p-10 hover:border-black/30 transition-all duration-300 group cursor-pointer"
                 whileHover={{ y: -4, boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-black/50">
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-mono text-xs uppercase tracking-widest text-black/50">
                     {project.subcategory}
                   </span>
-                  <span className="text-xs uppercase tracking-wider text-black/50">
+                  <span className="font-mono text-xs uppercase tracking-widest text-black/50">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-black/80 transition-colors">
+                <h3 className="font-mono text-2xl font-semibold mb-4 leading-tight tracking-tight group-hover:text-black/80 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-black/70 mb-4 leading-relaxed">{project.description}</p>
+                <p className="font-sans text-base text-black/70 mb-6 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-2 py-1 bg-black/5 text-black/70 group-hover:bg-black/10 transition-colors"
+                      className="font-sans text-xs px-3 py-1.5 bg-black/5 text-black/70 group-hover:bg-black/10 transition-colors"
                     >
                       {tag}
                     </span>
@@ -161,7 +161,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="mt-12 text-center"
+            className="mt-16 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -169,7 +169,7 @@ export default function Home() {
           >
             <Link
               to="/work"
-              className="inline-block text-sm uppercase tracking-wider hover:opacity-70 transition-opacity group"
+              className="inline-block font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity group"
             >
               View All Projects{' '}
               <motion.span
@@ -185,7 +185,7 @@ export default function Home() {
         </section>
 
         {/* Philosophy Section */}
-        <section className="max-w-6xl mx-auto px-6 py-16 border-t border-black/10">
+        <section className="max-w-6xl mx-auto px-6 py-20 border-t border-black/10">
           <motion.div
             className="max-w-2xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -193,8 +193,8 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold mb-6">Digital & Physical</h2>
-            <p className="text-lg text-black/70 leading-relaxed">
+            <h2 className="font-mono text-4xl font-bold mb-8 tracking-tight">Digital & Physical</h2>
+            <p className="font-sans text-lg text-black/70 leading-relaxed">
               My work spans both digital and physical domains—building software,
               conducting security research, and crafting with wood. This multi-disciplinary
               approach brings unique problem-solving perspectives to every project.

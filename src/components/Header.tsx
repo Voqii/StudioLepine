@@ -35,7 +35,7 @@ export default function Header() {
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ duration: 0.2 }}
             />
-            <span className="text-xl font-bold tracking-tight group-hover:opacity-70 transition-opacity duration-200">
+            <span className="text-xl font-mono font-bold tracking-tight group-hover:opacity-70 transition-opacity duration-200">
               Studio Lepine
             </span>
           </Link>
@@ -45,9 +45,9 @@ export default function Header() {
               <Link
                 key={path}
                 to={path}
-                className="relative text-sm transition-colors duration-200 hover:text-black/70"
+                className="relative font-sans text-sm uppercase tracking-wide transition-colors duration-200 hover:text-black/70"
               >
-                <span className={isActive(path) ? 'font-semibold' : ''}>
+                <span className={isActive(path) ? 'font-semibold' : 'font-medium'}>
                   {label}
                 </span>
                 {isActive(path) && (
