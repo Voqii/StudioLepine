@@ -69,6 +69,7 @@ export default function MobileMenu() {
               exit={{ x: '100%' }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="fixed top-0 right-0 bottom-0 w-64 bg-white border-l-4 border-accent shadow-2xl z-50 md:hidden"
+              style={{ backgroundColor: '#ffffff', opacity: 1 }}
             >
               <div className="flex flex-col h-full">
                 {/* Close Button */}
