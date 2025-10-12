@@ -27,7 +27,7 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <nav className="max-w-6xl mx-auto px-6 py-3">
+      <nav className="max-w-6xl mx-auto px-6 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-4 group">
@@ -56,7 +56,7 @@ export default function Header() {
                 </span>
                 {isActive(path) && (
                   <motion.div
-                    className="absolute -bottom-[13px] left-0 right-0 h-[2px] bg-accent-dark"
+                    className="absolute -bottom-[9px] left-0 right-0 h-[2px] bg-accent-dark"
                     layoutId="activeNav"
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   />
