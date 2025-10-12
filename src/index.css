@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  /* Accent colors - Earth tones for physical/craftsmanship */
+  --color-accent: #8B4513;
+  --color-accent-light: #A0826D;
+  --color-accent-dark: #654321;
+  --color-accent-muted: #B8997A;
+
+  /* Steel colors - For digital/technical work */
+  --color-steel: #6B7280;
+  --color-steel-light: #9CA3AF;
+  --color-steel-dark: #4B5563;
+
+  /* Sage colors - Reserved for future use */
+  --color-sage: #7A8B7A;
+  --color-sage-light: #9DAF9D;
+  --color-sage-dark: #5F6F5F;
+}
+
 * {
   scroll-behavior: smooth;
 }
