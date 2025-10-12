@@ -90,7 +90,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/work"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-black text-white hover:bg-black/80 transition-colors duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-accent text-white hover:bg-accent-dark transition-colors duration-200"
                 >
                   View Work
                 </Link>
@@ -98,7 +98,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-black hover:bg-black hover:text-white transition-all duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
                 >
                   Get in Touch
                 </Link>
@@ -109,15 +109,18 @@ export default function Home() {
 
         {/* Featured Projects */}
         <section className="max-w-6xl mx-auto px-6 py-16 border-t border-black/10">
-          <motion.h2
-            className="font-mono text-4xl font-bold mb-16 tracking-tight"
+          <motion.div
+            className="mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
           >
-            Featured Work
-          </motion.h2>
+            <h2 className="font-mono text-4xl font-bold tracking-tight">
+              Featured Work
+            </h2>
+            <div className="w-24 h-1 bg-accent mt-4"></div>
+          </motion.div>
 
           <motion.div
             className="grid md:grid-cols-2 gap-8"
@@ -130,16 +133,18 @@ export default function Home() {
               <motion.div
                 key={project.id}
                 variants={staggerItem}
-                className={`border-2 p-10 transition-all duration-300 group cursor-pointer ${
+                className={`border-l-4 border-2 p-10 transition-all duration-300 group cursor-pointer ${
                   project.category === 'digital'
-                    ? 'border-steel-light/30 hover:border-steel'
-                    : 'border-accent-light/30 hover:border-accent'
+                    ? 'border-steel border-l-steel hover:border-steel-dark hover:shadow-steel/20'
+                    : 'border-accent border-l-accent hover:border-accent-dark hover:shadow-accent/20'
                 }`}
-                whileHover={{ y: -4, boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
+                whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(0,0,0,0.12)' }}
               >
                 <div className="flex items-start justify-between mb-6">
-                  <span className={`font-mono text-xs uppercase tracking-widest font-semibold ${
-                    project.category === 'digital' ? 'text-steel' : 'text-accent'
+                  <span className={`font-mono text-sm uppercase tracking-widest font-bold px-3 py-1 ${
+                    project.category === 'digital'
+                      ? 'bg-steel/15 text-steel-dark'
+                      : 'bg-accent/15 text-accent-dark'
                   }`}>
                     {project.subcategory}
                   </span>
@@ -157,10 +162,10 @@ export default function Home() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`font-sans text-xs px-3 py-1.5 transition-colors ${
+                      className={`font-sans text-xs px-3 py-2 transition-all ${
                         project.category === 'digital'
-                          ? 'bg-steel/10 text-steel-dark group-hover:bg-steel/20'
-                          : 'bg-accent/10 text-accent-dark group-hover:bg-accent/20'
+                          ? 'bg-steel/20 text-steel-dark border border-steel/30 group-hover:bg-steel/30'
+                          : 'bg-accent/20 text-accent-dark border border-accent/30 group-hover:bg-accent/30'
                       }`}
                     >
                       {tag}
@@ -180,11 +185,11 @@ export default function Home() {
           >
             <Link
               to="/work"
-              className="inline-block font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity group"
+              className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-accent-dark hover:text-accent transition-colors group"
             >
-              View All Projects{' '}
+              View All Projects
               <motion.span
-                className="inline-block"
+                className="inline-block text-lg"
                 initial={{ x: 0 }}
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.2 }}
@@ -196,7 +201,7 @@ export default function Home() {
         </section>
 
         {/* Philosophy Section */}
-        <section className="max-w-6xl mx-auto px-6 py-20 border-t border-black/10">
+        <section className="max-w-6xl mx-auto px-6 py-20 border-t border-accent/20">
           <motion.div
             className="max-w-2xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -204,7 +209,11 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-mono text-4xl font-bold mb-8 tracking-tight">Digital & Physical</h2>
+            <h2 className="font-mono text-4xl font-bold mb-4 tracking-tight">
+              <span className="text-steel-dark">Digital</span> &{' '}
+              <span className="text-accent-dark">Physical</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-steel via-black to-accent mx-auto mb-8"></div>
             <p className="font-sans text-lg text-black/70 leading-relaxed">
               My work spans both digital and physical domains—building software,
               conducting security research, and crafting with wood. This multi-disciplinary
