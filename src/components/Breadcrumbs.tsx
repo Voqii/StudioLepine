@@ -14,7 +14,7 @@ export default function Breadcrumbs() {
   ];
 
   let currentPath = '';
-  pathnames.forEach((pathname, index) => {
+  pathnames.forEach((pathname) => {
     currentPath += `/${pathname}`;
 
     // Format the name nicely
