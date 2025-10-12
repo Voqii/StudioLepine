@@ -254,6 +254,17 @@ a[class*="px-6"] {
   margin: 1.5rem 0;
 }
 
+/* Mobile Menu Fix for iOS Safari */
+.mobile-menu-panel {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.mobile-menu-content {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
 /* Print Styles */
 @media print {
   /* Hide unnecessary elements when printing */
