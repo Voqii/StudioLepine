@@ -58,7 +58,7 @@ export default function MobileMenu() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
               onClick={closeMenu}
             />
 
@@ -68,8 +68,7 @@ export default function MobileMenu() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="fixed top-0 right-0 bottom-0 w-64 bg-white border-l-4 border-accent shadow-2xl z-50 md:hidden"
-              style={{ backgroundColor: '#ffffff', opacity: 1 }}
+              className="fixed top-0 right-0 bottom-0 w-64 bg-white bg-opacity-100 border-l-4 border-accent shadow-2xl z-50 md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* Close Button */}
