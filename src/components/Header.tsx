@@ -5,8 +5,13 @@ export default function Header() {
     <header className="border-b border-black/10">
       <nav className="max-w-6xl mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-bold tracking-tight hover:opacity-70 transition-opacity">
-            Studio Lepine
+          <Link to="/" className="flex items-center gap-3 hover:opacity-70 transition-opacity">
+            <img
+              src="/studiolepinelogo.png"
+              alt="Studio Lepine"
+              className="h-10 w-10"
+            />
+            <span className="text-xl font-bold tracking-tight">Studio Lepine</span>
           </Link>
 
           <div className="flex gap-8">
