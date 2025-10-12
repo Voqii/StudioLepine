@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: white;
   color: black;
@@ -9,4 +13,16 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
+}
+
+/* Performance optimization for animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
