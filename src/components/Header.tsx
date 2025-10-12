@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import MobileMenu from './MobileMenu';
 
 export default function Header() {
   const location = useLocation();
@@ -27,6 +28,7 @@ export default function Header() {
     >
       <nav className="max-w-6xl mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <motion.img
               src="/studiolepinelogo.png"
@@ -40,7 +42,8 @@ export default function Header() {
             </span>
           </Link>
 
-          <div className="flex gap-8">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex gap-8">
             {navLinks.map(({ path, label }) => (
               <Link
                 key={path}
@@ -60,6 +63,9 @@ export default function Header() {
               </Link>
             ))}
           </div>
+
+          {/* Mobile Menu */}
+          <MobileMenu />
         </div>
       </nav>
     </motion.header>
