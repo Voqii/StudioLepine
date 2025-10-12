@@ -10,7 +10,7 @@ const projects: Project[] = [
     id: 'studio-lepine-website',
     title: 'Studio Lepine Portfolio',
     category: 'digital',
-    subcategory: 'Web Development',
+    subcategory: 'Mobile & Web Development',
     description: 'Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features responsive design, smooth animations with Framer Motion, and optimized performance.',
     tags: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
     imageUrl: '/images/projects/web-dev/studio-lepine-home-page.png',
@@ -19,7 +19,7 @@ const projects: Project[] = [
     id: 'learn-quickly-network',
     title: 'Learn Quickly Network',
     category: 'digital',
-    subcategory: 'Web Development',
+    subcategory: 'Mobile & Web Development',
     description: 'Educational platform designed for rapid skill acquisition and knowledge sharing. Clean, user-friendly interface focused on learning efficiency.',
     tags: ['React', 'Education', 'UI/UX', 'Web'],
     imageUrl: '/images/projects/web-dev/learn-quickly-network-home-page.png',
@@ -28,7 +28,7 @@ const projects: Project[] = [
     id: 'scwcs-website',
     title: 'SCWCS Window Cleaning',
     category: 'digital',
-    subcategory: 'Web Development',
+    subcategory: 'Mobile & Web Development',
     description: 'Professional service website for Saskatchewan window cleaning company. Features booking integration, service showcase, and responsive design.',
     tags: ['Web', 'Business', 'Responsive', 'SEO'],
     imageUrl: '/images/projects/web-dev/scwcs-window-cleaning-home-page.png',
@@ -53,7 +53,7 @@ const projects: Project[] = [
     subcategory: 'Community Impact',
     description: 'Pro bono scheduling and coordination platform designed for palliative care services. Simplifies appointment management and improves care coordination for patients and healthcare providers.',
     tags: ['React', 'Community', 'Healthcare', 'Scheduling', 'SimplyBook'],
-    imageUrl: '/images/projects/palliative-booking/silverwings-simplybook.png',
+    imageUrl: '/images/projects/palliative-booking/silverwings-home-page.png',
   },
 
   // Logos and Business Cards
@@ -79,7 +79,7 @@ const projects: Project[] = [
     id: 'sergio-app-logo',
     title: 'Sergio App iOS Icon',
     category: 'digital',
-    subcategory: 'Logo & App Design',
+    subcategory: 'Logo & Brand Design',
     description: 'iOS app icon design for Sergio field service management application. Modern, recognizable design optimized for mobile platforms.',
     tags: ['App Icon', 'iOS', 'Logo Design', 'Mobile'],
     imageUrl: '/images/projects/logos-and-business-cards/sergio-app-logo-ios.png',
@@ -152,6 +152,15 @@ const projects: Project[] = [
 
   // Woodworking Projects
   {
+    id: 'squirrel-picnic-table',
+    title: 'Squirrel Picnic Table',
+    category: 'physical',
+    subcategory: 'Custom Woodworking',
+    description: 'Whimsical miniature picnic table designed for backyard wildlife. Crafted with precision joinery and weather-resistant finish for outdoor durability.',
+    tags: ['Woodworking', 'Outdoor', 'Wildlife', 'Craftsmanship'],
+    imageUrl: '/images/projects/custom-woodworking/squirrell-picnic-table.png',
+  },
+  {
     id: 'cedar-planter',
     title: 'Custom Cedar Planter',
     category: 'physical',
@@ -159,6 +168,15 @@ const projects: Project[] = [
     description: 'Handcrafted cedar planter box featuring traditional joinery and weather-resistant construction. Designed for outdoor durability while maintaining aesthetic appeal.',
     tags: ['Woodworking', 'Cedar', 'Outdoor', 'Craftsmanship'],
     imageUrl: '/images/projects/custom-woodworking/cedar-planter.png',
+  },
+  {
+    id: 'custom-cutting-board',
+    title: 'Custom Cutting Board',
+    category: 'physical',
+    subcategory: 'Custom Woodworking',
+    description: 'Handcrafted cutting board made from premium hardwoods. Features edge-grain construction, food-safe finish, and ergonomic design for daily kitchen use.',
+    tags: ['Woodworking', 'Kitchen', 'Hardwood', 'Functional'],
+    imageUrl: '/images/projects/custom-woodworking/cutting-board.png',
   },
 
   // Placeholder for future categories
@@ -174,7 +192,7 @@ const projects: Project[] = [
     id: 'systems-engineering',
     title: 'Systems Engineering',
     category: 'physical',
-    subcategory: 'Engineering',
+    subcategory: 'Engineering & Systems',
     description: 'Custom solutions for mechanical systems, automation, and infrastructure projects. Bridging the gap between digital control systems and physical implementation.',
     tags: ['Engineering', 'Systems', 'Automation', 'Infrastructure'],
   },
@@ -182,11 +200,32 @@ const projects: Project[] = [
 
 export default function Work() {
   const [filter, setFilter] = useState<'all' | 'digital' | 'physical'>('all');
+  const [subcategoryFilter, setSubcategoryFilter] = useState<string>('all');
+
+  // Get unique subcategories for the current filter
+  const getSubcategories = () => {
+    if (filter === 'all') return [];
+    const categoryProjects = projects.filter((p) => p.category === filter);
+    const subcategories = [...new Set(categoryProjects.map((p) => p.subcategory))];
+    return subcategories.sort();
+  };
+
+  const subcategories = getSubcategories();
+
+  // Reset subcategory filter when main filter changes
+  const handleFilterChange = (newFilter: 'all' | 'digital' | 'physical') => {
+    setFilter(newFilter);
+    setSubcategoryFilter('all');
+  };
 
   const filteredProjects =
     filter === 'all'
       ? projects
-      : projects.filter((p) => p.category === filter);
+      : projects.filter((p) => {
+          const matchesCategory = p.category === filter;
+          const matchesSubcategory = subcategoryFilter === 'all' || p.subcategory === subcategoryFilter;
+          return matchesCategory && matchesSubcategory;
+        });
 
   return (
     <PageTransition>
@@ -205,9 +244,9 @@ export default function Work() {
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
+        {/* Primary Filter Buttons */}
         <motion.div
-          className="flex gap-4 mb-12 border-b border-black/10 pb-4"
+          className="flex gap-4 border-b border-black/10 pb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -219,7 +258,7 @@ export default function Work() {
           ].map(({ value, label }) => (
             <motion.button
               key={value}
-              onClick={() => setFilter(value)}
+              onClick={() => handleFilterChange(value)}
               className={`text-sm uppercase tracking-wider transition-all relative ${
                 filter === value ? 'font-semibold' : 'text-black/50 hover:text-black'
               }`}
@@ -237,6 +276,57 @@ export default function Work() {
             </motion.button>
           ))}
         </motion.div>
+
+        {/* Subcategory Filter Buttons */}
+        <AnimatePresence>
+          {subcategories.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <motion.div
+                className="flex flex-wrap gap-3 pt-4 pb-8"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              >
+                <motion.button
+                  onClick={() => setSubcategoryFilter('all')}
+                  className={`text-xs uppercase tracking-wider px-3 py-1.5 border transition-all ${
+                    subcategoryFilter === 'all'
+                      ? 'border-black bg-black text-white font-semibold'
+                      : 'border-black/20 text-black/60 hover:border-black/40 hover:text-black'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  All {filter === 'digital' ? 'Digital' : 'Physical'}
+                </motion.button>
+                {subcategories.map((subcategory) => (
+                  <motion.button
+                    key={subcategory}
+                    onClick={() => setSubcategoryFilter(subcategory)}
+                    className={`text-xs uppercase tracking-wider px-3 py-1.5 border transition-all ${
+                      subcategoryFilter === subcategory
+                        ? 'border-black bg-black text-white font-semibold'
+                        : 'border-black/20 text-black/60 hover:border-black/40 hover:text-black'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {subcategory}
+                  </motion.button>
+                ))}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className={subcategories.length > 0 ? '' : 'mb-12'} />
 
         {/* Projects Grid */}
         <AnimatePresence mode="wait">
@@ -262,11 +352,11 @@ export default function Work() {
               >
                 {/* Project Image */}
                 {project.imageUrl && (
-                  <div className="w-full h-48 bg-black/5 overflow-hidden">
+                  <div className="w-full h-48 bg-black/5 overflow-hidden flex items-center justify-center">
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 )}

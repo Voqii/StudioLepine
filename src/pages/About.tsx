@@ -142,12 +142,24 @@ export default function About() {
               {[
                 'React',
                 'TypeScript',
+                'JavaScript',
+                'Python',
                 'Swift',
                 'Node.js',
                 'Supabase',
                 'Tailwind CSS',
-                'Security Testing',
                 'Git',
+                'Photoshop',
+                'Artificial Intelligence',
+                'Security Testing',
+                'SDKs & APIs',
+                'Custom Software',
+                'QuickBooks',
+                'Bash/Shell',
+                'HTML/CSS',
+                'REST APIs',
+                'Database Design',
+                'UI/UX Design',
               ].map((tech, index) => (
                 <motion.span
                   key={tech}
