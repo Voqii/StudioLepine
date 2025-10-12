@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Project } from '../types';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 import { staggerContainer, staggerItem } from '../utils/animations';
 
 const featuredProjects: Project[] = [
@@ -46,6 +47,7 @@ const featuredProjects: Project[] = [
 export default function Home() {
   return (
     <PageTransition>
+      <SEO />
       <div>
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-6 py-24 md:py-32">
