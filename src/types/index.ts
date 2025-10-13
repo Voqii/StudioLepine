@@ -7,6 +7,7 @@ export interface Project {
   tags: string[];
   featured?: boolean;
   imageUrl?: string;
+  images?: string[];
 }
 
 export interface BlogPost {

@@ -43,6 +43,12 @@ const projects: Project[] = [
     description: 'Full-stack field service management solution with React web application, Swift iOS app, and Supabase backend. Features real-time synchronization, offline support, and comprehensive service tracking.',
     tags: ['React', 'TypeScript', 'Swift', 'Supabase', 'iOS', 'Real-time'],
     imageUrl: '/images/projects/fsm-app/sergio-home-page-react.png',
+    images: [
+      '/images/projects/fsm-app/sergio-home-page-react.png',
+      '/images/projects/fsm-app/sergio-login-page-react.png',
+      '/images/projects/fsm-app/sergio-routing-page-react.png',
+      '/images/projects/fsm-app/sergio-loading-screen-ios.PNG',
+    ],
   },
 
   // Palliative Care Booking
@@ -201,6 +207,7 @@ const projects: Project[] = [
 export default function Work() {
   const [filter, setFilter] = useState<'all' | 'digital' | 'physical'>('all');
   const [subcategoryFilter, setSubcategoryFilter] = useState<string>('all');
+  const [currentImageIndexes, setCurrentImageIndexes] = useState<Record<string, number>>({});
 
   // Get unique subcategories for the current filter
   const getSubcategories = () => {
@@ -216,6 +223,33 @@ export default function Work() {
   const handleFilterChange = (newFilter: 'all' | 'digital' | 'physical') => {
     setFilter(newFilter);
     setSubcategoryFilter('all');
+  };
+
+  // Get current image for a project
+  const getCurrentImage = (project: Project) => {
+    if (project.images && project.images.length > 0) {
+      const index = currentImageIndexes[project.id] || 0;
+      return project.images[index];
+    }
+    return project.imageUrl;
+  };
+
+  // Navigate to next image
+  const nextImage = (projectId: string, imageCount: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndexes((prev) => ({
+      ...prev,
+      [projectId]: ((prev[projectId] || 0) + 1) % imageCount,
+    }));
+  };
+
+  // Navigate to previous image
+  const prevImage = (projectId: string, imageCount: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndexes((prev) => ({
+      ...prev,
+      [projectId]: ((prev[projectId] || 0) - 1 + imageCount) % imageCount,
+    }));
   };
 
   const filteredProjects =
@@ -350,14 +384,55 @@ export default function Work() {
                 }}
                 layout
               >
-                {/* Project Image */}
-                {project.imageUrl && (
-                  <div className="w-full h-48 bg-black/5 overflow-hidden flex items-center justify-center">
+                {/* Project Image with Carousel */}
+                {(project.imageUrl || project.images) && (
+                  <div className="w-full h-48 bg-black/5 overflow-hidden flex items-center justify-center relative">
                     <img
-                      src={project.imageUrl}
+                      src={getCurrentImage(project) || project.imageUrl}
                       alt={project.title}
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                     />
+
+                    {/* Carousel Controls - Only show if multiple images */}
+                    {project.images && project.images.length > 1 && (
+                      <>
+                        {/* Previous Button */}
+                        <button
+                          onClick={(e) => prevImage(project.id, project.images!.length, e)}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                          aria-label="Previous image"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                          </svg>
+                        </button>
+
+                        {/* Next Button */}
+                        <button
+                          onClick={(e) => nextImage(project.id, project.images!.length, e)}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                          aria-label="Next image"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+
+                        {/* Image Counter Dots */}
+                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                          {project.images.map((_, idx) => (
+                            <div
+                              key={idx}
+                              className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+                                idx === (currentImageIndexes[project.id] || 0)
+                                  ? 'bg-white w-3'
+                                  : 'bg-white/50'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
                 )}
 
