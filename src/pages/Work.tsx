@@ -60,6 +60,10 @@ const projects: Project[] = [
     description: 'Pro bono scheduling and coordination platform designed for palliative care services. Simplifies appointment management and improves care coordination for patients and healthcare providers.',
     tags: ['React', 'Community', 'Healthcare', 'Scheduling', 'SimplyBook'],
     imageUrl: '/images/projects/palliative-booking/silverwings-home-page.png',
+    images: [
+      '/images/projects/palliative-booking/silverwings-home-page.png',
+      '/images/projects/palliative-booking/silverwings-simplybook.png',
+    ],
   },
 
   // Logos and Business Cards
@@ -70,7 +74,7 @@ const projects: Project[] = [
     subcategory: 'Logo & Brand Design',
     description: 'Professional logo and brand identity for Studio Lepine. Clean, modern design that represents the intersection of digital and physical craftsmanship.',
     tags: ['Logo Design', 'Branding', 'Vector', 'Identity'],
-    imageUrl: '/images/projects/logos-and-business-cards/Studio-Lepine-Logo-Trans-Black.png',
+    imageUrl: '/images/projects/logos-and-business-cards/logos/Studio-Lepine-Logo-Trans-Black.png',
   },
   {
     id: 'snow-away-branding',
@@ -79,7 +83,12 @@ const projects: Project[] = [
     subcategory: 'Logo & Brand Design',
     description: 'Comprehensive branding package including logo design and business card layout for snow removal service. Bold, professional aesthetic with seasonal color palette.',
     tags: ['Logo Design', 'Business Cards', 'Branding', 'Print'],
-    imageUrl: '/images/projects/logos-and-business-cards/snow-away-high-resolution-logo-transparent.png',
+    imageUrl: '/images/projects/logos-and-business-cards/logos/snow-away-high-resolution-logo-transparent.png',
+    images: [
+      '/images/projects/logos-and-business-cards/logos/snow-away-high-resolution-logo-transparent.png',
+      '/images/projects/logos-and-business-cards/logos/snow-away-high-resolution-logo.png',
+      '/images/projects/logos-and-business-cards/business-cards/snow-away-business-card-design.png',
+    ],
   },
   {
     id: 'sergio-app-logo',
@@ -88,7 +97,7 @@ const projects: Project[] = [
     subcategory: 'Logo & Brand Design',
     description: 'iOS app icon design for Sergio field service management application. Modern, recognizable design optimized for mobile platforms.',
     tags: ['App Icon', 'iOS', 'Logo Design', 'Mobile'],
-    imageUrl: '/images/projects/logos-and-business-cards/sergio-app-logo-ios.png',
+    imageUrl: '/images/projects/logos-and-business-cards/logos/sergio-app-logo-ios.png',
   },
   {
     id: 'scwcs-logo',
@@ -97,7 +106,7 @@ const projects: Project[] = [
     subcategory: 'Logo & Brand Design',
     description: 'Professional logo for Saskatchewan window cleaning company. Clean design emphasizing clarity and professionalism.',
     tags: ['Logo Design', 'Branding', 'Service Industry'],
-    imageUrl: '/images/projects/logos-and-business-cards/scwcs-logo-design.png',
+    imageUrl: '/images/projects/logos-and-business-cards/logos/scwcs-logo-design.png',
   },
   {
     id: 'learn-tech-quickly-logo',
@@ -106,7 +115,7 @@ const projects: Project[] = [
     subcategory: 'Logo & Brand Design',
     description: 'Educational technology brand logo combining modern design with approachable aesthetics for learning platform.',
     tags: ['Logo Design', 'Education', 'Tech', 'Branding'],
-    imageUrl: '/images/projects/logos-and-business-cards/learn-tech-quickly-logo.png',
+    imageUrl: '/images/projects/logos-and-business-cards/logos/learn-tech-quickly-logo.png',
   },
   {
     id: 'thecalmshell-logo',
@@ -115,7 +124,7 @@ const projects: Project[] = [
     subcategory: 'Logo & Brand Design',
     description: 'Minimalist logo design for wellness and mindfulness brand. Soft, calming aesthetic with shell motif.',
     tags: ['Logo Design', 'Wellness', 'Minimalist', 'Branding'],
-    imageUrl: '/images/projects/logos-and-business-cards/thecalmshell-logo.png',
+    imageUrl: '/images/projects/logos-and-business-cards/logos/thecalmshell-logo.png',
   },
 
   // Graphic Design Projects
@@ -126,7 +135,7 @@ const projects: Project[] = [
     subcategory: 'Graphic Design',
     description: 'Eye-catching discount advertisement for window cleaning services. Bold typography and clear call-to-action.',
     tags: ['Graphic Design', 'Marketing', 'Advertising', 'Print'],
-    imageUrl: '/images/projects/graphic-design/scwcs-discount-advert.png',
+    imageUrl: '/images/projects/graphic-design/promo-material/scwcs-discount-advert.png',
   },
   {
     id: 'scwcs-door-hanger',
@@ -135,7 +144,12 @@ const projects: Project[] = [
     subcategory: 'Graphic Design',
     description: 'Direct marketing door hanger design for local service promotion. Informative layout with contact details and service highlights.',
     tags: ['Graphic Design', 'Print', 'Marketing', 'Local'],
-    imageUrl: '/images/projects/graphic-design/scwcs-door-hanger-design.png',
+    imageUrl: '/images/projects/graphic-design/promo-material/scwcs-door-hanger-design.png',
+    images: [
+      '/images/projects/graphic-design/promo-material/scwcs-door-hanger-design.png',
+      '/images/projects/graphic-design/promo-material/scwcs-discount-advert.png',
+      '/images/projects/graphic-design/promo-material/travel-agent-ad.png',
+    ],
   },
   {
     id: 'scwcs-social-banner',
@@ -144,7 +158,7 @@ const projects: Project[] = [
     subcategory: 'Graphic Design',
     description: 'Professional social media banner design for business profiles. Consistent branding across digital platforms.',
     tags: ['Social Media', 'Graphic Design', 'Digital', 'Branding'],
-    imageUrl: '/images/projects/graphic-design/scwcs-social-media-banner.png',
+    imageUrl: '/images/projects/graphic-design/social-media/scwcs-social-media-banner.png',
   },
   {
     id: 'travel-agent-ad',
@@ -153,7 +167,7 @@ const projects: Project[] = [
     subcategory: 'Graphic Design',
     description: 'Vibrant travel agency promotional design with aspirational imagery and compelling copy.',
     tags: ['Graphic Design', 'Travel', 'Advertising', 'Marketing'],
-    imageUrl: '/images/projects/graphic-design/travel-agent-ad.png',
+    imageUrl: '/images/projects/graphic-design/promo-material/travel-agent-ad.png',
   },
 
   // Woodworking Projects
