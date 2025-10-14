@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '../types';
 import PageTransition from '../components/PageTransition';
@@ -139,7 +139,7 @@ const projects: Project[] = [
   },
   {
     id: 'scwcs-door-hanger',
-    title: 'SCWCS Door Hanger Design',
+    title: 'Promotional Materials',
     category: 'digital',
     subcategory: 'Graphic Design',
     description: 'Direct marketing door hanger design for local service promotion. Informative layout with contact details and service highlights.',
@@ -222,6 +222,26 @@ export default function Work() {
   const [filter, setFilter] = useState<'all' | 'digital' | 'physical'>('all');
   const [subcategoryFilter, setSubcategoryFilter] = useState<string>('all');
   const [currentImageIndexes, setCurrentImageIndexes] = useState<Record<string, number>>({});
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [lightboxTitle, setLightboxTitle] = useState<string>('');
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxTitle('');
+  };
+
+  // Handle ESC key to close lightbox
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && lightboxImage) {
+        closeLightbox();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [lightboxImage]);
 
   // Get unique subcategories for the current filter
   const getSubcategories = () => {
@@ -264,6 +284,13 @@ export default function Work() {
       ...prev,
       [projectId]: ((prev[projectId] || 0) - 1 + imageCount) % imageCount,
     }));
+  };
+
+  // Open lightbox
+  const openLightbox = (imageUrl: string, title: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightboxImage(imageUrl);
+    setLightboxTitle(title);
   };
 
   const filteredProjects =
@@ -401,11 +428,20 @@ export default function Work() {
                 {/* Project Image with Carousel */}
                 {(project.imageUrl || project.images) && (
                   <div className="w-full h-48 bg-black/5 overflow-hidden flex items-center justify-center relative">
-                    <img
-                      src={getCurrentImage(project) || project.imageUrl}
-                      alt={project.title}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.img
+                        key={getCurrentImage(project)}
+                        src={getCurrentImage(project) || project.imageUrl}
+                        alt={project.title}
+                        className="w-full h-full object-contain cursor-zoom-in absolute inset-0"
+                        onClick={(e) => openLightbox(getCurrentImage(project) || project.imageUrl || '', project.title, e)}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        whileHover={{ scale: 1.05 }}
+                      />
+                    </AnimatePresence>
 
                     {/* Carousel Controls - Only show if multiple images */}
                     {project.images && project.images.length > 1 && (
@@ -494,6 +530,69 @@ export default function Work() {
             No projects found in this category.
           </motion.div>
         )}
+
+        {/* Lightbox Modal */}
+        <AnimatePresence>
+          {lightboxImage && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeLightbox}
+            >
+              <motion.div
+                className="relative max-w-7xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors z-10"
+                  aria-label="Close lightbox"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Title */}
+                {lightboxTitle && (
+                  <motion.h3
+                    className="text-white text-xl font-semibold mb-4 text-center"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    {lightboxTitle}
+                  </motion.h3>
+                )}
+
+                {/* Image */}
+                <img
+                  src={lightboxImage}
+                  alt={lightboxTitle}
+                  className="max-w-full max-h-full object-contain"
+                  onClick={(e) => e.stopPropagation()}
+                />
+
+                {/* Helper text */}
+                <motion.p
+                  className="text-white/60 text-sm mt-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  Click outside or press ESC to close
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </PageTransition>
   );
