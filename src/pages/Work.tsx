@@ -222,6 +222,7 @@ export default function Work() {
   const [filter, setFilter] = useState<'all' | 'digital' | 'physical'>('all');
   const [subcategoryFilter, setSubcategoryFilter] = useState<string>('all');
   const [currentImageIndexes, setCurrentImageIndexes] = useState<Record<string, number>>({});
+  const [carouselDirection, setCarouselDirection] = useState<Record<string, number>>({});
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [lightboxTitle, setLightboxTitle] = useState<string>('');
 
@@ -271,6 +272,7 @@ export default function Work() {
   // Navigate to next image
   const nextImage = (projectId: string, imageCount: number, e: React.MouseEvent) => {
     e.stopPropagation();
+    setCarouselDirection((prev) => ({ ...prev, [projectId]: 1 }));
     setCurrentImageIndexes((prev) => ({
       ...prev,
       [projectId]: ((prev[projectId] || 0) + 1) % imageCount,
@@ -280,6 +282,7 @@ export default function Work() {
   // Navigate to previous image
   const prevImage = (projectId: string, imageCount: number, e: React.MouseEvent) => {
     e.stopPropagation();
+    setCarouselDirection((prev) => ({ ...prev, [projectId]: -1 }));
     setCurrentImageIndexes((prev) => ({
       ...prev,
       [projectId]: ((prev[projectId] || 0) - 1 + imageCount) % imageCount,
@@ -428,16 +431,32 @@ export default function Work() {
                 {/* Project Image with Carousel */}
                 {(project.imageUrl || project.images) && (
                   <div className="w-full h-48 bg-black/5 overflow-hidden flex items-center justify-center relative">
-                    <AnimatePresence mode="wait" initial={false}>
+                    <AnimatePresence mode="wait" initial={false} custom={carouselDirection[project.id] || 1}>
                       <motion.img
                         key={getCurrentImage(project)}
                         src={getCurrentImage(project) || project.imageUrl}
                         alt={project.title}
                         className="w-full h-full object-contain cursor-zoom-in absolute inset-0"
                         onClick={(e) => openLightbox(getCurrentImage(project) || project.imageUrl || '', project.title, e)}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0, scale: 1 }}
-                        exit={{ opacity: 0, x: -20 }}
+                        custom={carouselDirection[project.id] || 1}
+                        variants={{
+                          enter: (direction: number) => ({
+                            opacity: 0,
+                            x: direction > 0 ? 100 : -100,
+                          }),
+                          center: {
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                          },
+                          exit: (direction: number) => ({
+                            opacity: 0,
+                            x: direction > 0 ? -100 : 100,
+                          }),
+                        }}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         whileHover={{ scale: 1.05 }}
                       />
