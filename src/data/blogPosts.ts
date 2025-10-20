@@ -4,10 +4,10 @@ import type { BlogPost } from '../types';
 // Each post should have: id, title, date, excerpt, content, tags, and optionally readTime
 export const blogPosts: BlogPost[] = [
   {
-    id: 'October-2024-First-Post',
+    id: 'building-studio-lepine-2025',
     title: 'Building Studio Lepine: How I Shipped a Portfolio Site in 2 Hours with AI',
     date: '2025-10-12',
-    excerpt: 'I built my entire portfolio site in 2 hours using React, TypeScript, and AI assistance. This is the story of escaping a corporate domain monopoly, finally committing to a brand that matters, and shipping professional web presence without being a "real" developer. From lepine.biz registration to live deployment, heres exactly how it went down.',
+    excerpt: 'I built my portfolio site in 2 hours using React, TypeScript, and AI. From beating a domain monopoly to shipping production code as a non-developer. How AI assistance changes web development and what it means for professional online presence.',
     content: `
 <p>I built my entire portfolio site in about 2 hours last night. Not a template. Not a drag-and-drop Wix thing. A proper React + TypeScript site deployed to Cloudflare Pages with custom branding, multiple pages, and a logo that actually means something to me.</p>
 <p>This isn't a humblebrag. I'm not some 10x developer who can crank out production-ready sites in an afternoon. I'm a window cleaner from Saskatchewan who "vibe codes" with AI assistance because I never formally learned to program. But that's exactly why this story matters. If I can do this, the barrier to entry for building professional web presence just got a hell of a lot lower.</p>
