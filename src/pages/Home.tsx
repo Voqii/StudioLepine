@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import type { Project } from '../types';
 import PageTransition from '../components/PageTransition';
 import SEO from '../components/SEO';
+import JackOLantern from '../components/JackOLantern';
 import { staggerContainer, staggerItem } from '../utils/animations';
 
 const featuredProjects: Project[] = [
@@ -58,16 +59,16 @@ export default function Home() {
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <motion.h1
-              className="font-mono text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-8"
+              className="font-mono text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               I solve problems by{' '}
-              <span className="text-accent-dark drop-shadow-[0_0_8px_rgba(255,107,26,0.5)]">building things</span>
+              <span className="text-halloween-orange drop-shadow-[0_0_12px_rgba(255,107,26,0.8)]">building things</span>
             </motion.h1>
             <motion.p
-              className="font-mono text-xl md:text-2xl text-steel mb-10 leading-snug"
+              className="font-mono text-xl md:text-2xl text-white/70 mb-10 leading-snug"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -75,7 +76,7 @@ export default function Home() {
               In code, in pixels, and with my hands.
             </motion.p>
             <motion.p
-              className="font-sans text-lg text-black/60 mb-10 leading-relaxed max-w-2xl"
+              className="font-sans text-lg text-white/60 mb-10 leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -89,18 +90,28 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative"
+              >
+                <JackOLantern />
                 <Link
                   to="/work"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-accent text-white hover:bg-accent-dark hover:shadow-[0_0_20px_rgba(255,107,26,0.6)] transition-all duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-halloween-orange text-white hover:bg-halloween-orangeGlow hover:shadow-[0_0_24px_rgba(255,107,26,0.8)] transition-all duration-200 relative z-10"
                 >
                   View Work
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative"
+              >
+                <JackOLantern />
                 <Link
                   to="/contact"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-white hover:shadow-[0_0_20px_rgba(255,107,26,0.6)] transition-all duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-halloween-orange bg-halloween-darkPurple/40 backdrop-blur-sm text-halloween-orange hover:bg-halloween-orange hover:text-white hover:shadow-[0_0_24px_rgba(255,107,26,0.8)] transition-all duration-200 relative z-10"
                 >
                   Get in Touch
                 </Link>
@@ -110,7 +121,7 @@ export default function Home() {
         </section>
 
         {/* Featured Projects */}
-        <section className="max-w-6xl mx-auto px-6 py-16 border-t border-black/10">
+        <section className="max-w-6xl mx-auto px-6 py-16 border-t border-halloween-orange/20">
           <motion.div
             className="mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -118,10 +129,10 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="font-mono text-4xl font-bold tracking-tight">
+            <h2 className="font-mono text-4xl font-bold tracking-tight text-white">
               Featured Work
             </h2>
-            <div className="w-24 h-1 bg-accent mt-4"></div>
+            <div className="w-24 h-1 bg-halloween-orange shadow-[0_0_8px_rgba(255,107,26,0.6)] mt-4"></div>
           </motion.div>
 
           <motion.div
@@ -135,30 +146,30 @@ export default function Home() {
               <motion.div
                 key={project.id}
                 variants={staggerItem}
-                className={`border-l-4 border-2 p-10 transition-all duration-300 group cursor-pointer ${
+                className={`border-l-4 border-2 p-10 transition-all duration-300 group cursor-pointer bg-halloween-darkPurple/20 backdrop-blur-sm ${
                   project.category === 'digital'
-                    ? 'border-steel border-l-steel hover:border-steel-dark hover:shadow-steel/20'
-                    : 'border-accent border-l-accent hover:border-accent-dark hover:shadow-accent/20'
+                    ? 'border-halloween-purple border-l-halloween-purple hover:border-halloween-purpleLight hover:shadow-[0_8px_24px_rgba(107,44,145,0.3)]'
+                    : 'border-halloween-orange border-l-halloween-orange hover:border-halloween-orangeGlow hover:shadow-[0_8px_24px_rgba(255,107,26,0.3)]'
                 }`}
-                whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(0,0,0,0.12)' }}
+                whileHover={{ y: -4 }}
               >
                 <div className="flex items-start justify-between mb-6">
                   <span className={`font-mono text-sm uppercase tracking-widest font-bold px-3 py-1 ${
                     project.category === 'digital'
-                      ? 'bg-steel/15 text-steel-dark'
-                      : 'bg-accent/15 text-accent-dark'
+                      ? 'bg-halloween-purple/30 text-halloween-purpleLight'
+                      : 'bg-halloween-orange/30 text-halloween-orange'
                   }`}>
                     {project.subcategory}
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-widest text-black/40">
+                  <span className="font-mono text-xs uppercase tracking-widest text-white/40">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="font-mono text-2xl font-semibold mb-4 leading-tight tracking-tight group-hover:opacity-80 transition-opacity">
+                <h3 className="font-mono text-2xl font-semibold mb-4 leading-tight tracking-tight text-white group-hover:text-halloween-orange transition-colors">
                   {project.title}
                 </h3>
-                <p className="font-sans text-base text-black/70 mb-6 leading-relaxed">{project.description}</p>
+                <p className="font-sans text-base text-white/70 mb-6 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
@@ -166,8 +177,8 @@ export default function Home() {
                       key={tag}
                       className={`font-sans text-xs px-3 py-2 transition-all ${
                         project.category === 'digital'
-                          ? 'bg-steel/20 text-steel-dark border border-steel/30 group-hover:bg-steel/30'
-                          : 'bg-accent/20 text-accent-dark border border-accent/30 group-hover:bg-accent/30'
+                          ? 'bg-halloween-purple/30 text-halloween-purpleLight border border-halloween-purple/40 group-hover:bg-halloween-purple/40'
+                          : 'bg-halloween-orange/30 text-halloween-orange border border-halloween-orange/40 group-hover:bg-halloween-orange/40'
                       }`}
                     >
                       {tag}
@@ -187,7 +198,7 @@ export default function Home() {
           >
             <Link
               to="/work"
-              className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-accent-dark hover:text-accent transition-colors group"
+              className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-halloween-orange hover:text-halloween-orangeGlow transition-colors group"
             >
               View All Projects
               <motion.span
@@ -203,7 +214,7 @@ export default function Home() {
         </section>
 
         {/* Philosophy Section */}
-        <section className="max-w-6xl mx-auto px-6 py-20 border-t border-accent/20">
+        <section className="max-w-6xl mx-auto px-6 py-20 border-t border-halloween-orange/20">
           <motion.div
             className="max-w-2xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -212,11 +223,11 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-mono text-4xl font-bold mb-4 tracking-tight">
-              <span className="text-steel-dark">Digital</span> &{' '}
-              <span className="text-accent-dark">Physical</span>
+              <span className="text-halloween-purpleLight">Digital</span> &{' '}
+              <span className="text-halloween-orange">Physical</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-steel via-black to-accent mx-auto mb-8"></div>
-            <p className="font-sans text-lg text-black/70 leading-relaxed">
+            <div className="w-24 h-1 bg-gradient-to-r from-halloween-purple via-white/30 to-halloween-orange mx-auto mb-8 shadow-[0_0_8px_rgba(255,107,26,0.4)]"></div>
+            <p className="font-sans text-lg text-white/70 leading-relaxed">
               My work spans both digital and physical domains—building software,
               conducting security research, and crafting with wood. This multi-disciplinary
               approach brings unique problem-solving perspectives to every project.
