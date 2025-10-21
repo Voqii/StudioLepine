@@ -46,8 +46,9 @@ export default function BlogPost() {
   const shareTitle = post.title;
   const shareText = `${post.title}\n${formatDate(post.date)} - ${post.readTime}\n\n${post.excerpt}`;
 
+  const currentUrl = `https://lepine.biz/blog/${id}`;
+
   const handleShare = (platform: 'twitter' | 'linkedin' | 'native') => {
-    const currentUrl = window.location.href;
     const encodedUrl = encodeURIComponent(currentUrl);
     const encodedTitle = encodeURIComponent(shareTitle);
 
@@ -81,10 +82,8 @@ export default function BlogPost() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(currentUrl);
   };
-
-  const currentUrl = `https://lepine.biz/blog/${id}`;
 
   return (
     <PageTransition>
