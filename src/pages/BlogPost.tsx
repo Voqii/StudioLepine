@@ -52,9 +52,6 @@ export default function BlogPost() {
     const encodedUrl = encodeURIComponent(currentUrl);
     const encodedTitle = encodeURIComponent(shareTitle);
 
-    console.log('Sharing URL:', currentUrl);
-    console.log('Encoded URL:', encodedUrl);
-
     switch (platform) {
       case 'twitter':
         window.open(
