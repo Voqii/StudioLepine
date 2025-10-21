@@ -91,6 +91,7 @@ export default function BlogPost() {
       <Helmet>
         <title>{post.title} - Studio Lepine</title>
         <meta name="description" content={post.excerpt} />
+        <link rel="canonical" href={currentUrl} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />
