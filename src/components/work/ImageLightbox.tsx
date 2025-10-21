@@ -24,6 +24,9 @@ export default function ImageLightbox({ imageUrl, title, onClose }: ImageLightbo
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Image lightbox"
       >
         <motion.div
           className="relative max-w-7xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center"
