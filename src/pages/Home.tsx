@@ -4,6 +4,7 @@ import type { Project } from '../types';
 import PageTransition from '../components/PageTransition';
 import SEO from '../components/SEO';
 import JackOLantern from '../components/JackOLantern';
+import SkeletonHandHover from '../components/SkeletonHandHover';
 import { staggerContainer, staggerItem } from '../utils/animations';
 
 const featuredProjects: Project[] = [
@@ -90,32 +91,36 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
-                <JackOLantern />
-                <Link
-                  to="/work"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-halloween-orange text-white hover:bg-halloween-orangeGlow hover:shadow-[0_0_24px_rgba(255,107,26,0.8)] transition-all duration-200 relative z-10"
+              <SkeletonHandHover>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative"
                 >
-                  View Work
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
-                <JackOLantern />
-                <Link
-                  to="/contact"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-halloween-orange bg-halloween-darkPurple/40 backdrop-blur-sm text-halloween-orange hover:bg-halloween-orange hover:text-white hover:shadow-[0_0_24px_rgba(255,107,26,0.8)] transition-all duration-200 relative z-10"
+                  <JackOLantern />
+                  <Link
+                    to="/work"
+                    className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-halloween-orange text-white hover:bg-halloween-orangeGlow hover:shadow-[0_0_24px_rgba(255,107,26,0.8)] transition-all duration-200 relative z-10"
+                  >
+                    View Work
+                  </Link>
+                </motion.div>
+              </SkeletonHandHover>
+              <SkeletonHandHover>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative"
                 >
-                  Get in Touch
-                </Link>
-              </motion.div>
+                  <JackOLantern />
+                  <Link
+                    to="/contact"
+                    className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-halloween-orange bg-halloween-darkPurple/40 backdrop-blur-sm text-halloween-orange hover:bg-halloween-orange hover:text-white hover:shadow-[0_0_24px_rgba(255,107,26,0.8)] transition-all duration-200 relative z-10"
+                  >
+                    Get in Touch
+                  </Link>
+                </motion.div>
+              </SkeletonHandHover>
             </motion.div>
           </motion.div>
         </section>

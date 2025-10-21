@@ -23,8 +23,8 @@
 }
 
 body {
-  background-color: white;
-  color: black;
+  background-color: #0a0a0a;
+  color: #ffffff;
   font-family: 'address-sans-pro', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -123,8 +123,8 @@ a[class*="px-6"] {
 }
 
 .loading-spinner {
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-top-color: black;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: white;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -256,7 +256,7 @@ a[class*="px-6"] {
 
 /* Mobile Menu Fix for iOS Safari - Ensure it's above texture background */
 .mobile-menu-panel {
-  background-color: #ffffff !important;
+  background-color: #1a0a1a !important;
   opacity: 1 !important;
   z-index: 9999 !important;
   isolation: isolate;
@@ -264,7 +264,7 @@ a[class*="px-6"] {
 }
 
 .mobile-menu-content {
-  background-color: #ffffff !important;
+  background-color: #1a0a1a !important;
   opacity: 1 !important;
   position: relative;
   z-index: 1;

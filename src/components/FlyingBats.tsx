@@ -10,62 +10,116 @@ interface Bat {
   behavior: 'fly-across' | 'circle';
 }
 
-// Bat SVG with wing flap animation
+// Bat SVG with wing flap animation - redesigned to look more bat-like
 function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 64 64"
+      viewBox="0 0 100 60"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-lg"
+      className="drop-shadow-2xl"
     >
-      {/* Bat body */}
-      <ellipse cx="32" cy="32" rx="4" ry="6" fill="#1a1a1a" />
+      {/* Bat body (oval torso) */}
+      <ellipse cx="50" cy="30" rx="6" ry="9" fill="#1a1a1a" />
 
-      {/* Bat head */}
-      <circle cx="32" cy="28" r="3" fill="#1a1a1a" />
-      <circle cx="30.5" cy="27" r="0.5" fill="#ff6b1a" className="animate-pulse" />
-      <circle cx="33.5" cy="27" r="0.5" fill="#ff6b1a" className="animate-pulse" />
+      {/* Bat head (slightly larger, more defined) */}
+      <ellipse cx="50" cy="22" r="5" rx="5" ry="4.5" fill="#1a1a1a" />
 
-      {/* Left wing */}
+      {/* Ears (pointed bat ears) */}
+      <path d="M47 18 L45 14 L48 19 Z" fill="#1a1a1a" />
+      <path d="M53 18 L55 14 L52 19 Z" fill="#1a1a1a" />
+
+      {/* Eyes (glowing orange) */}
+      <circle cx="47" cy="22" r="1.2" fill="#ff6b1a" className="animate-pulse" />
+      <circle cx="53" cy="22" r="1.2" fill="#ff6b1a" className="animate-pulse" />
+
+      {/* Left wing (much larger, more detailed with membrane structure) */}
       <motion.path
-        d="M28 32 Q20 28, 12 32 Q8 36, 10 40 Q14 38, 18 36 Q22 34, 26 34 Z"
+        d="M44 30 Q35 25, 20 28 Q10 30, 5 35 Q8 40, 15 42 Q25 40, 35 38 Q40 35, 44 32 Z"
         fill="#1a1a1a"
-        opacity="0.9"
+        opacity="0.95"
+        stroke="#2a2a2a"
+        strokeWidth="0.5"
         animate={{
           d: isFlapping
             ? [
-                'M28 32 Q20 28, 12 32 Q8 36, 10 40 Q14 38, 18 36 Q22 34, 26 34 Z',
-                'M28 32 Q20 24, 12 20 Q8 22, 10 28 Q14 30, 18 32 Q22 33, 26 34 Z',
-                'M28 32 Q20 28, 12 32 Q8 36, 10 40 Q14 38, 18 36 Q22 34, 26 34 Z',
+                'M44 30 Q35 25, 20 28 Q10 30, 5 35 Q8 40, 15 42 Q25 40, 35 38 Q40 35, 44 32 Z',
+                'M44 30 Q35 18, 20 15 Q10 14, 5 18 Q8 25, 15 30 Q25 32, 35 33 Q40 32, 44 31 Z',
+                'M44 30 Q35 25, 20 28 Q10 30, 5 35 Q8 40, 15 42 Q25 40, 35 38 Q40 35, 44 32 Z',
               ]
             : undefined,
         }}
         transition={{
-          duration: 0.3,
+          duration: 0.4,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
       />
 
-      {/* Right wing */}
+      {/* Left wing membrane details */}
       <motion.path
-        d="M36 32 Q44 28, 52 32 Q56 36, 54 40 Q50 38, 46 36 Q42 34, 38 34 Z"
-        fill="#1a1a1a"
-        opacity="0.9"
+        d="M44 30 Q38 28, 30 30 M44 31 Q40 30, 35 32 M44 32 Q42 32, 38 35"
+        stroke="#2a2a2a"
+        strokeWidth="0.3"
+        opacity="0.6"
         animate={{
           d: isFlapping
             ? [
-                'M36 32 Q44 28, 52 32 Q56 36, 54 40 Q50 38, 46 36 Q42 34, 38 34 Z',
-                'M36 32 Q44 24, 52 20 Q56 22, 54 28 Q50 30, 46 32 Q42 33, 38 34 Z',
-                'M36 32 Q44 28, 52 32 Q56 36, 54 40 Q50 38, 46 36 Q42 34, 38 34 Z',
+                'M44 30 Q38 28, 30 30 M44 31 Q40 30, 35 32 M44 32 Q42 32, 38 35',
+                'M44 30 Q38 22, 30 20 M44 30 Q40 26, 35 28 M44 31 Q42 30, 38 32',
+                'M44 30 Q38 28, 30 30 M44 31 Q40 30, 35 32 M44 32 Q42 32, 38 35',
               ]
             : undefined,
         }}
         transition={{
-          duration: 0.3,
+          duration: 0.4,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+
+      {/* Right wing (mirrored, larger and more detailed) */}
+      <motion.path
+        d="M56 30 Q65 25, 80 28 Q90 30, 95 35 Q92 40, 85 42 Q75 40, 65 38 Q60 35, 56 32 Z"
+        fill="#1a1a1a"
+        opacity="0.95"
+        stroke="#2a2a2a"
+        strokeWidth="0.5"
+        animate={{
+          d: isFlapping
+            ? [
+                'M56 30 Q65 25, 80 28 Q90 30, 95 35 Q92 40, 85 42 Q75 40, 65 38 Q60 35, 56 32 Z',
+                'M56 30 Q65 18, 80 15 Q90 14, 95 18 Q92 25, 85 30 Q75 32, 65 33 Q60 32, 56 31 Z',
+                'M56 30 Q65 25, 80 28 Q90 30, 95 35 Q92 40, 85 42 Q75 40, 65 38 Q60 35, 56 32 Z',
+              ]
+            : undefined,
+        }}
+        transition={{
+          duration: 0.4,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+
+      {/* Right wing membrane details */}
+      <motion.path
+        d="M56 30 Q62 28, 70 30 M56 31 Q60 30, 65 32 M56 32 Q58 32, 62 35"
+        stroke="#2a2a2a"
+        strokeWidth="0.3"
+        opacity="0.6"
+        animate={{
+          d: isFlapping
+            ? [
+                'M56 30 Q62 28, 70 30 M56 31 Q60 30, 65 32 M56 32 Q58 32, 62 35',
+                'M56 30 Q62 22, 70 20 M56 30 Q60 26, 65 28 M56 31 Q58 30, 62 32',
+                'M56 30 Q62 28, 70 30 M56 31 Q60 30, 65 32 M56 32 Q58 32, 62 35',
+              ]
+            : undefined,
+        }}
+        transition={{
+          duration: 0.4,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
@@ -76,22 +130,22 @@ function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
 
 export default function FlyingBats() {
   const [bats] = useState<Bat[]>([
-    // Flying across bats (varied heights)
-    { id: 1, startY: 10, duration: 12, delay: 0, size: 45, behavior: 'fly-across' },
-    { id: 2, startY: 25, duration: 15, delay: 2, size: 35, behavior: 'fly-across' },
-    { id: 3, startY: 45, duration: 10, delay: 4, size: 55, behavior: 'fly-across' },
-    { id: 4, startY: 65, duration: 13, delay: 1, size: 40, behavior: 'fly-across' },
-    { id: 5, startY: 80, duration: 11, delay: 3, size: 50, behavior: 'fly-across' },
-    { id: 6, startY: 15, duration: 14, delay: 5, size: 38, behavior: 'fly-across' },
-    { id: 7, startY: 35, duration: 16, delay: 6, size: 42, behavior: 'fly-across' },
-    { id: 8, startY: 55, duration: 12, delay: 7, size: 48, behavior: 'fly-across' },
-    { id: 9, startY: 70, duration: 13, delay: 2.5, size: 36, behavior: 'fly-across' },
-    { id: 10, startY: 20, duration: 15, delay: 8, size: 52, behavior: 'fly-across' },
+    // Flying across bats (larger, more varied heights)
+    { id: 1, startY: 10, duration: 14, delay: 0, size: 100, behavior: 'fly-across' },
+    { id: 2, startY: 25, duration: 18, delay: 2, size: 80, behavior: 'fly-across' },
+    { id: 3, startY: 45, duration: 12, delay: 4, size: 120, behavior: 'fly-across' },
+    { id: 4, startY: 65, duration: 16, delay: 1, size: 90, behavior: 'fly-across' },
+    { id: 5, startY: 80, duration: 13, delay: 3, size: 110, behavior: 'fly-across' },
+    { id: 6, startY: 15, duration: 17, delay: 5, size: 85, behavior: 'fly-across' },
+    { id: 7, startY: 35, duration: 19, delay: 6, size: 95, behavior: 'fly-across' },
+    { id: 8, startY: 55, duration: 15, delay: 7, size: 105, behavior: 'fly-across' },
+    { id: 9, startY: 70, duration: 16, delay: 2.5, size: 88, behavior: 'fly-across' },
+    { id: 10, startY: 20, duration: 18, delay: 8, size: 115, behavior: 'fly-across' },
 
-    // Circling/hovering bats
-    { id: 11, startY: 30, duration: 20, delay: 1, size: 60, behavior: 'circle' },
-    { id: 12, startY: 50, duration: 18, delay: 9, size: 46, behavior: 'circle' },
-    { id: 13, startY: 40, duration: 22, delay: 4, size: 54, behavior: 'circle' },
+    // Circling/hovering bats (larger and more prominent)
+    { id: 11, startY: 30, duration: 22, delay: 1, size: 130, behavior: 'circle' },
+    { id: 12, startY: 50, duration: 20, delay: 9, size: 100, behavior: 'circle' },
+    { id: 13, startY: 40, duration: 24, delay: 4, size: 120, behavior: 'circle' },
   ]);
 
   return (

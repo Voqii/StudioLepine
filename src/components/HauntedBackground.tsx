@@ -97,15 +97,15 @@ export default function HauntedBackground() {
 
       {/* Haunted house silhouette */}
       <motion.div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1800px] h-[500px] opacity-90"
+        className="absolute bottom-0 left-1/2 w-full max-w-[1400px] h-[600px] opacity-90"
         style={{
-          transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`, // Subtle parallax
+          transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`, // Center horizontally with parallax
         }}
       >
         <img
           src="/images/halloween/haunted-house.jpg"
           alt=""
-          className="w-full h-full object-contain object-bottom"
+          className="w-full h-full object-cover object-bottom"
           style={{
             filter: 'brightness(0.2) contrast(1.5)', // Make it dark silhouette
           }}

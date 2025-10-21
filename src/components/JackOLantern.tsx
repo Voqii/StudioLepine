@@ -33,11 +33,16 @@ export default function JackOLantern() {
         />
 
         {/* Pumpkin image */}
-        <img
-          src="/images/halloween/jack-o-lantern.png"
-          alt=""
-          className="relative z-10 w-20 h-20 object-contain drop-shadow-[0_4px_12px_rgba(255,107,26,0.8)]"
-        />
+        <div className="relative z-10 w-20 h-20 rounded-full overflow-hidden">
+          <img
+            src="/images/halloween/jack-o-lantern.png"
+            alt=""
+            className="w-full h-full object-cover drop-shadow-[0_4px_12px_rgba(255,107,26,0.8)]"
+            style={{
+              background: 'radial-gradient(circle, rgba(10,10,10,0) 40%, #0a0a0a 100%)',
+            }}
+          />
+        </div>
 
         {/* Extra glow rays */}
         <motion.div
