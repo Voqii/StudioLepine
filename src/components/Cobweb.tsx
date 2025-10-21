@@ -53,8 +53,8 @@ export default function Cobweb({ corner }: CobwebProps) {
   return (
     <motion.div
       className={`fixed ${isLeft ? 'left-0' : 'right-0'} ${isTop ? 'top-0' : 'bottom-0'} pointer-events-none z-50`}
-      initial={{ opacity: 0, scale: 0.7 }}
-      animate={{ opacity: 0.5, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.5 }}
       transition={{ duration: 1.5, delay: 0.3 }}
       style={getTransformStyle()}
     >

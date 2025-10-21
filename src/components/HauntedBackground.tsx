@@ -1,14 +1,6 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 
 export default function HauntedBackground() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
@@ -49,13 +41,10 @@ export default function HauntedBackground() {
 
       {/* Massive Moon with glow */}
       <motion.div
-        className="absolute"
+        className="absolute top-[15%] right-[15%]"
         style={{
-          top: '15%',
-          right: '15%',
           width: '800px',
           height: '800px',
-          transform: `translateY(${scrollY * 0.3}px)`, // Parallax
         }}
       >
         {/* Moon glow layers */}
@@ -97,17 +86,14 @@ export default function HauntedBackground() {
 
       {/* Haunted house silhouette */}
       <motion.div
-        className="absolute bottom-0 left-1/2 w-full max-w-[1400px] h-[600px] opacity-90"
-        style={{
-          transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`, // Center horizontally with parallax
-        }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[600px] opacity-90"
       >
         <img
-          src="/images/halloween/haunted-house.jpg"
+          src="/images/halloween/haunted-house.jpeg"
           alt=""
           className="w-full h-full object-cover object-bottom"
           style={{
-            filter: 'brightness(0.2) contrast(1.5)', // Make it dark silhouette
+            filter: 'brightness(0.4) contrast(1.5)', // Make it visible dark silhouette
           }}
         />
 

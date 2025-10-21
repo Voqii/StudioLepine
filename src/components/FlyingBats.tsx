@@ -35,9 +35,9 @@ function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
       <circle cx="47" cy="22" r="1.2" fill="#ff6b1a" className="animate-pulse" />
       <circle cx="53" cy="22" r="1.2" fill="#ff6b1a" className="animate-pulse" />
 
-      {/* Left wing (much larger, more detailed with membrane structure) */}
+      {/* Left wing (angular with finger-like protrusions) */}
       <motion.path
-        d="M44 30 Q35 25, 20 28 Q10 30, 5 35 Q8 40, 15 42 Q25 40, 35 38 Q40 35, 44 32 Z"
+        d="M44 30 L38 26 L28 24 L18 26 L10 30 L5 36 L8 40 L15 38 L25 36 L35 34 L42 32 Z"
         fill="#1a1a1a"
         opacity="0.95"
         stroke="#2a2a2a"
@@ -45,9 +45,9 @@ function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
         animate={{
           d: isFlapping
             ? [
-                'M44 30 Q35 25, 20 28 Q10 30, 5 35 Q8 40, 15 42 Q25 40, 35 38 Q40 35, 44 32 Z',
-                'M44 30 Q35 18, 20 15 Q10 14, 5 18 Q8 25, 15 30 Q25 32, 35 33 Q40 32, 44 31 Z',
-                'M44 30 Q35 25, 20 28 Q10 30, 5 35 Q8 40, 15 42 Q25 40, 35 38 Q40 35, 44 32 Z',
+                'M44 30 L38 26 L28 24 L18 26 L10 30 L5 36 L8 40 L15 38 L25 36 L35 34 L42 32 Z',
+                'M44 30 L38 20 L28 16 L18 18 L10 22 L5 26 L8 32 L15 30 L25 28 L35 29 L42 30 Z',
+                'M44 30 L38 26 L28 24 L18 26 L10 30 L5 36 L8 40 L15 38 L25 36 L35 34 L42 32 Z',
               ]
             : undefined,
         }}
@@ -58,18 +58,18 @@ function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
         }}
       />
 
-      {/* Left wing membrane details */}
+      {/* Left wing finger details */}
       <motion.path
-        d="M44 30 Q38 28, 30 30 M44 31 Q40 30, 35 32 M44 32 Q42 32, 38 35"
+        d="M44 30 L35 27 M44 31 L30 29 M43 32 L25 32"
         stroke="#2a2a2a"
-        strokeWidth="0.3"
+        strokeWidth="0.4"
         opacity="0.6"
         animate={{
           d: isFlapping
             ? [
-                'M44 30 Q38 28, 30 30 M44 31 Q40 30, 35 32 M44 32 Q42 32, 38 35',
-                'M44 30 Q38 22, 30 20 M44 30 Q40 26, 35 28 M44 31 Q42 30, 38 32',
-                'M44 30 Q38 28, 30 30 M44 31 Q40 30, 35 32 M44 32 Q42 32, 38 35',
+                'M44 30 L35 27 M44 31 L30 29 M43 32 L25 32',
+                'M44 30 L35 22 M44 30 L30 20 M43 30 L25 24',
+                'M44 30 L35 27 M44 31 L30 29 M43 32 L25 32',
               ]
             : undefined,
         }}
@@ -80,9 +80,9 @@ function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
         }}
       />
 
-      {/* Right wing (mirrored, larger and more detailed) */}
+      {/* Right wing (angular with finger-like protrusions) */}
       <motion.path
-        d="M56 30 Q65 25, 80 28 Q90 30, 95 35 Q92 40, 85 42 Q75 40, 65 38 Q60 35, 56 32 Z"
+        d="M56 30 L62 26 L72 24 L82 26 L90 30 L95 36 L92 40 L85 38 L75 36 L65 34 L58 32 Z"
         fill="#1a1a1a"
         opacity="0.95"
         stroke="#2a2a2a"
@@ -90,9 +90,9 @@ function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
         animate={{
           d: isFlapping
             ? [
-                'M56 30 Q65 25, 80 28 Q90 30, 95 35 Q92 40, 85 42 Q75 40, 65 38 Q60 35, 56 32 Z',
-                'M56 30 Q65 18, 80 15 Q90 14, 95 18 Q92 25, 85 30 Q75 32, 65 33 Q60 32, 56 31 Z',
-                'M56 30 Q65 25, 80 28 Q90 30, 95 35 Q92 40, 85 42 Q75 40, 65 38 Q60 35, 56 32 Z',
+                'M56 30 L62 26 L72 24 L82 26 L90 30 L95 36 L92 40 L85 38 L75 36 L65 34 L58 32 Z',
+                'M56 30 L62 20 L72 16 L82 18 L90 22 L95 26 L92 32 L85 30 L75 28 L65 29 L58 30 Z',
+                'M56 30 L62 26 L72 24 L82 26 L90 30 L95 36 L92 40 L85 38 L75 36 L65 34 L58 32 Z',
               ]
             : undefined,
         }}
@@ -103,18 +103,18 @@ function BatSVG({ size, isFlapping }: { size: number; isFlapping: boolean }) {
         }}
       />
 
-      {/* Right wing membrane details */}
+      {/* Right wing finger details */}
       <motion.path
-        d="M56 30 Q62 28, 70 30 M56 31 Q60 30, 65 32 M56 32 Q58 32, 62 35"
+        d="M56 30 L65 27 M56 31 L70 29 M57 32 L75 32"
         stroke="#2a2a2a"
-        strokeWidth="0.3"
+        strokeWidth="0.4"
         opacity="0.6"
         animate={{
           d: isFlapping
             ? [
-                'M56 30 Q62 28, 70 30 M56 31 Q60 30, 65 32 M56 32 Q58 32, 62 35',
-                'M56 30 Q62 22, 70 20 M56 30 Q60 26, 65 28 M56 31 Q58 30, 62 32',
-                'M56 30 Q62 28, 70 30 M56 31 Q60 30, 65 32 M56 32 Q58 32, 62 35',
+                'M56 30 L65 27 M56 31 L70 29 M57 32 L75 32',
+                'M56 30 L65 22 M56 30 L70 20 M57 30 L75 24',
+                'M56 30 L65 27 M56 31 L70 29 M57 32 L75 32',
               ]
             : undefined,
         }}
