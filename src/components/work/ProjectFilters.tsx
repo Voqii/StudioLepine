@@ -36,6 +36,8 @@ export default function ProjectFilters({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
+        role="tablist"
+        aria-label="Project category filter"
       >
         {filterOptions.map(({ value, label }) => (
           <motion.button
@@ -46,6 +48,9 @@ export default function ProjectFilters({
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            role="tab"
+            aria-selected={filter === value}
+            aria-label={`Filter by ${label}`}
           >
             {label}
             {filter === value && (
@@ -75,6 +80,8 @@ export default function ProjectFilters({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3, delay: 0.1 }}
+              role="group"
+              aria-label="Subcategory filter"
             >
               <motion.button
                 onClick={() => onSubcategoryChange('all')}
@@ -85,6 +92,8 @@ export default function ProjectFilters({
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-pressed={subcategoryFilter === 'all'}
+                aria-label={`Show all ${filter} projects`}
               >
                 All {filter === 'digital' ? 'Digital' : 'Physical'}
               </motion.button>
@@ -99,6 +108,8 @@ export default function ProjectFilters({
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-pressed={subcategoryFilter === subcategory}
+                  aria-label={`Filter by ${subcategory}`}
                 >
                   {subcategory}
                 </motion.button>

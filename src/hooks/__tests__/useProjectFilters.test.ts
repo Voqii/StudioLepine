@@ -236,10 +236,10 @@ describe('useProjectFilters', () => {
     expect(result.current.filter).toBe('digital');
 
     // Update projects list
-    const newProjects = [...mockProjects, {
+    const newProjects: Project[] = [...mockProjects, {
       id: '6',
       title: 'New Digital',
-      category: 'digital',
+      category: 'digital' as const,
       subcategory: 'Web Development',
       description: 'New',
       tags: ['New'],
