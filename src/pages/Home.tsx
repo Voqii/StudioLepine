@@ -64,7 +64,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               I solve problems by{' '}
-              <span className="text-accent-dark">building things</span>
+              <span className="text-accent-dark drop-shadow-[0_0_8px_rgba(255,107,26,0.5)]">building things</span>
             </motion.h1>
             <motion.p
               className="font-mono text-xl md:text-2xl text-steel mb-10 leading-snug"
@@ -92,7 +92,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/work"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-accent text-white hover:bg-accent-dark transition-colors duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 bg-accent text-white hover:bg-accent-dark hover:shadow-[0_0_20px_rgba(255,107,26,0.6)] transition-all duration-200"
                 >
                   View Work
                 </Link>
@@ -100,7 +100,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-white transition-all duration-200"
+                  className="inline-block font-mono text-sm font-medium uppercase tracking-wider px-8 py-4 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-white hover:shadow-[0_0_20px_rgba(255,107,26,0.6)] transition-all duration-200"
                 >
                   Get in Touch
                 </Link>

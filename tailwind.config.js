@@ -8,10 +8,16 @@ export default {
     extend: {
       colors: {
         accent: {
-          DEFAULT: '#8B4513',      // Saddle brown - earthy, craftsmanship
-          light: '#A0826D',        // Lighter warm brown
-          dark: '#654321',         // Dark brown
-          muted: '#B8997A',        // Very muted tan
+          DEFAULT: '#FF6B1A',      // 🎃 Halloween Orange
+          light: '#FF8C42',        // Lighter pumpkin orange
+          dark: '#CC5500',         // Deep Halloween orange
+          muted: '#FFB380',        // Muted orange
+        },
+        halloween: {
+          orange: '#FF6B1A',       // Primary pumpkin orange
+          black: '#1a1a1a',        // Deep black
+          purple: '#6B2C91',       // Spooky purple
+          green: '#39FF14',        // Eerie green glow
         },
         sage: {
           DEFAULT: '#7A8B7A',      // Muted sage green - technical/natural
