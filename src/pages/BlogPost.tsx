@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
+import DOMPurify from 'dompurify';
 import PageTransition from '../components/PageTransition';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { blogPosts } from '../data/blogPosts';
@@ -23,12 +24,18 @@ export default function BlogPost() {
     });
   };
 
-  // Auto-format content: convert line breaks to paragraphs
-  const formatContent = (content: string) => {
+  /**
+   * Formats blog post content by wrapping paragraphs in <p> tags
+   * and sanitizing HTML to prevent XSS attacks.
+   *
+   * @param content - Raw blog post content with double newlines as paragraph separators
+   * @returns Sanitized HTML string safe for dangerouslySetInnerHTML
+   */
+  const formatContent = (content: string): string => {
     // Split by double line breaks to get paragraphs
     const paragraphs = content.split('\n\n');
 
-    return paragraphs
+    const formatted = paragraphs
       .map((para) => {
         const trimmed = para.trim();
         if (!trimmed) return '';
@@ -42,6 +49,14 @@ export default function BlogPost() {
         return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
       })
       .join('\n');
+
+    // Sanitize HTML to prevent XSS attacks
+    // Allow only safe tags commonly used in blog posts
+    return DOMPurify.sanitize(formatted, {
+      ALLOWED_TAGS: ['p', 'br', 'b', 'strong', 'i', 'em', 'u', 'a', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'code', 'pre'],
+      ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+      ADD_ATTR: ['target'], // Ensure target attribute is allowed
+    });
   };
 
   // Share functionality
