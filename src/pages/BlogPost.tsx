@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link, useParams, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import PageTransition from '../components/PageTransition';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { blogPosts } from '../data/blogPosts';
@@ -42,9 +43,9 @@ export default function BlogPost() {
   };
 
   // Share functionality
-  const currentUrl = `https://lepine.biz/blog/${id}`;
+  const currentUrl = window.location.href;
   const shareTitle = post.title;
-  const shareText = post.excerpt;
+  const shareText = `${post.title}\n${formatDate(post.date)} - ${post.readTime}\n\n${post.excerpt}`;
 
   const handleShare = (platform: 'twitter' | 'linkedin' | 'native') => {
     const encodedUrl = encodeURIComponent(currentUrl);
@@ -86,6 +87,19 @@ export default function BlogPost() {
 
   return (
     <PageTransition>
+      <Helmet>
+        <title>{post.title} - Studio Lepine</title>
+        <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:image" content="https://lepine.biz/studiolepinelogo.png" />
+        <meta property="article:published_time" content={post.date} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+      </Helmet>
       <Breadcrumbs />
       <article className="max-w-3xl mx-auto px-6 py-16">
         {/* Back button */}
