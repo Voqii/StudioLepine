@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 import { blogPosts } from '../data/blogPosts';
 import { staggerContainer, staggerItem } from '../utils/animations';
 
@@ -20,6 +21,12 @@ export default function Blog() {
 
   return (
     <PageTransition>
+      <SEO
+        title="Blog - Studio Lepine"
+        description="Thoughts on design, development, security, and craftsmanship. Insights from a multi-disciplinary creator based in Saskatchewan, Canada."
+        url="https://lepine.biz/blog"
+        keywords="blog, design, development, security, craftsmanship, technology, woodworking"
+      />
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div

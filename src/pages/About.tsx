@@ -1,10 +1,17 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 export default function About() {
   return (
     <PageTransition>
+      <SEO
+        title="About - Studio Lepine"
+        description="Multi-disciplinary creator solving problems through code, design, and craftsmanship. Full-stack development, security research, and custom woodworking based in Saskatchewan, Canada."
+        url="https://lepine.biz/about"
+        keywords="about, portfolio, developer, designer, security researcher, woodworker, Saskatchewan, Canada"
+      />
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div

@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 export default function Contact() {
   return (
     <PageTransition>
+      <SEO
+        title="Contact - Studio Lepine"
+        description="Get in touch for web development, mobile apps, security consulting, UI/UX design, or custom woodworking projects. Available for select projects in Saskatchewan, Canada and remotely."
+        url="https://lepine.biz/contact"
+        keywords="contact, hire, developer, designer, security consultant, woodworker, Saskatchewan, Canada"
+      />
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div

@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 export default function Terms() {
   return (
     <PageTransition>
+      <SEO
+        title="Terms of Service - Studio Lepine"
+        description="Terms of Service for Studio Lepine (lepine.biz). Information about using this website and engaging with our services."
+        url="https://lepine.biz/terms"
+        keywords="terms of service, terms and conditions, legal"
+      />
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div
