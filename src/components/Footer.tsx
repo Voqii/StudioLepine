@@ -4,11 +4,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-black/10 mt-auto">
-      <div className="max-w-6xl mx-auto px-6 py-12">
+    <footer className="border-t border-halloween-orange/20 mt-auto bg-gradient-to-t from-halloween-orange/5 to-transparent relative overflow-hidden">
+      {/* Spooky fog effect */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 py-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-black/60">
-            <span>© {currentYear} Studio Lepine. Saskatchewan, Canada.</span>
+            <span>© {currentYear} Studio Lepine. Saskatchewan, Canada. 👻</span>
             <div className="flex items-center gap-4">
               <Link to="/privacy" className="hover:text-accent transition-colors">
                 Privacy Policy

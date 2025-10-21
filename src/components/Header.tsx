@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="border-b border-black/10 bg-white/80 backdrop-blur-sm sticky top-0 z-50"
+      className="border-b border-halloween-orange/20 bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-halloween-orange/10"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
@@ -39,7 +39,7 @@ export default function Header() {
               transition={{ duration: 0.2 }}
             />
             <span className="text-3xl font-mono font-bold tracking-tight group-hover:opacity-70 transition-opacity duration-200">
-              Studio Lepine
+              Studio Lepine <span className="text-2xl">🎃</span>
             </span>
           </Link>
 

@@ -200,6 +200,16 @@ const projects: Project[] = [
     imageUrl: '/images/projects/custom-woodworking/cutting-board.png',
   },
 
+  // AI & Research Projects
+  {
+    id: 'llm-behavioral-architecture',
+    title: 'LLM Behavioral Architecture System',
+    category: 'digital',
+    subcategory: 'AI & Research',
+    description: 'Proprietary verification-first architecture achieving 98-100% accuracy in LLM interactions through system-level behavioral enforcement. 200+ hours of adversarial testing across 37 iterations. Zero per-request token overhead compared to industry standard prompt engineering approaches that cost $7.50 per 1000 requests. Architectural solution preventing hallucination rather than managing it.',
+    tags: ['AI', 'Research', 'Architecture', 'LLM', 'Verification', 'Testing'],
+  },
+
   // Placeholder for future categories
   {
     id: 'security-research',
