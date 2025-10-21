@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '../types';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 import { staggerContainer, staggerItem } from '../utils/animations';
 
 const projects: Project[] = [
@@ -307,6 +308,12 @@ export default function Work() {
 
   return (
     <PageTransition>
+      <SEO
+        title="Work - Studio Lepine"
+        description="Portfolio of digital and physical projects including web development, mobile apps, security research, graphic design, and custom woodworking. View my work in Saskatchewan, Canada."
+        url="https://lepine.biz/work"
+        keywords="portfolio, projects, web development, mobile apps, security research, graphic design, woodworking, craftsmanship"
+      />
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div

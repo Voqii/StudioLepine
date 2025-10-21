@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 export default function Privacy() {
   return (
     <PageTransition>
+      <SEO
+        title="Privacy Policy - Studio Lepine"
+        description="Privacy policy for Studio Lepine (lepine.biz). We do not collect, store, or track personal information from visitors."
+        url="https://lepine.biz/privacy"
+        keywords="privacy policy, data protection, privacy"
+      />
       <div className="max-w-3xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div
