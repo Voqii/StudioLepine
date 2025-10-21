@@ -49,7 +49,6 @@ export default function BlogPost() {
   const handleShare = (platform: 'twitter' | 'linkedin' | 'native') => {
     const encodedUrl = encodeURIComponent(currentUrl);
     const encodedTitle = encodeURIComponent(shareTitle);
-    const encodedText = encodeURIComponent(shareText);
 
     switch (platform) {
       case 'twitter':
@@ -171,7 +170,7 @@ export default function BlogPost() {
             >
               Copy Link
             </button>
-            {navigator.share && (
+            {typeof navigator !== 'undefined' && navigator.share && (
               <button
                 onClick={() => handleShare('native')}
                 className="font-mono text-sm px-3 py-2 border border-sky/30 hover:bg-sky/10 transition-colors"
