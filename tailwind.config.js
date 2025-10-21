@@ -15,9 +15,15 @@ export default {
         },
         halloween: {
           orange: '#FF6B1A',       // Primary pumpkin orange
-          black: '#1a1a1a',        // Deep black
+          orangeGlow: '#FF8534',   // Brighter glow
+          black: '#0a0a0a',        // Deepest black
+          darkPurple: '#1a0a1a',   // Purple-tinted black
           purple: '#6B2C91',       // Spooky purple
+          purpleLight: '#8B4CB8',  // Lighter purple
           green: '#39FF14',        // Eerie green glow
+          moon: '#FFE4B5',         // Moonlight yellow
+          moonGlow: '#FFF8DC',     // Moon glow
+          fog: '#B0B0B0',          // Fog gray
         },
         sage: {
           DEFAULT: '#7A8B7A',      // Muted sage green - technical/natural

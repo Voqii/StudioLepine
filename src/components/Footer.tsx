@@ -4,20 +4,20 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-halloween-orange/20 mt-auto bg-gradient-to-t from-halloween-orange/5 to-transparent relative overflow-hidden">
+    <footer className="border-t border-halloween-orange/30 mt-auto bg-gradient-to-t from-halloween-darkPurple/40 to-transparent relative overflow-hidden">
       {/* Spooky fog effect */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-halloween-purple/10 via-transparent to-transparent pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 py-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-black/60">
-            <span>© {currentYear} Studio Lepine. Saskatchewan, Canada. 👻</span>
+          <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-white/60">
+            <span>© {currentYear} Studio Lepine. Saskatchewan, Canada.</span>
             <div className="flex items-center gap-4">
-              <Link to="/privacy" className="hover:text-accent transition-colors">
+              <Link to="/privacy" className="hover:text-halloween-orange transition-colors">
                 Privacy Policy
               </Link>
-              <span className="text-black/30">•</span>
-              <Link to="/terms" className="hover:text-accent transition-colors">
+              <span className="text-white/30">•</span>
+              <Link to="/terms" className="hover:text-halloween-orange transition-colors">
                 Terms of Service
               </Link>
             </div>
@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             <a
               href="mailto:cody@lepine.biz"
-              className="text-sm hover:text-accent transition-colors"
+              className="text-sm text-white/80 hover:text-halloween-orange transition-colors"
             >
               cody@lepine.biz
             </a>
@@ -37,7 +37,7 @@ export default function Footer() {
                 href="https://github.com/Voqii/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-70 transition-opacity"
+                className="text-white/80 hover:text-halloween-orange transition-colors"
                 aria-label="GitHub"
               >
                 <svg
@@ -55,7 +55,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/cody-lepine-19222b38a/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-70 transition-opacity"
+                className="text-white/80 hover:text-halloween-orange transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg
