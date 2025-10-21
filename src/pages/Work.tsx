@@ -333,7 +333,7 @@ export default function Work() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-5xl font-bold mb-6">Work</h1>
-          <p className="text-xl text-black/70 max-w-2xl">
+          <p className="text-xl text-white/70 max-w-2xl">
             A collection of projects spanning digital development, security research,
             and physical craftsmanship.
           </p>
@@ -355,7 +355,7 @@ export default function Work() {
               key={value}
               onClick={() => handleFilterChange(value)}
               className={`text-sm uppercase tracking-wider transition-all relative ${
-                filter === value ? 'font-semibold' : 'text-black/50 hover:text-black'
+                filter === value ? 'font-semibold' : 'text-white/50 hover:text-white'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -363,7 +363,7 @@ export default function Work() {
               {label}
               {filter === value && (
                 <motion.div
-                  className="absolute -bottom-[17px] left-0 right-0 h-[2px] bg-black"
+                  className="absolute -bottom-[17px] left-0 right-0 h-[2px] bg-white"
                   layoutId="filterIndicator"
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 />
@@ -393,8 +393,8 @@ export default function Work() {
                   onClick={() => setSubcategoryFilter('all')}
                   className={`text-xs uppercase tracking-wider px-3 py-1.5 border transition-all ${
                     subcategoryFilter === 'all'
-                      ? 'border-black bg-black text-white font-semibold'
-                      : 'border-black/20 text-black/60 hover:border-black/40 hover:text-black'
+                      ? 'border-halloween-orange bg-halloween-orange text-white font-semibold'
+                      : 'border-white/20 text-white/60 hover:border-white/40 hover:text-white'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -407,8 +407,8 @@ export default function Work() {
                     onClick={() => setSubcategoryFilter(subcategory)}
                     className={`text-xs uppercase tracking-wider px-3 py-1.5 border transition-all ${
                       subcategoryFilter === subcategory
-                        ? 'border-black bg-black text-white font-semibold'
-                        : 'border-black/20 text-black/60 hover:border-black/40 hover:text-black'
+                        ? 'border-halloween-orange bg-halloween-orange text-white font-semibold'
+                        : 'border-white/20 text-white/60 hover:border-white/40 hover:text-white'
                     }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

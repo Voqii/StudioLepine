@@ -18,11 +18,10 @@ export default function Layout() {
       {/* Layer 2: Fog particles */}
       <FogParticles />
 
-      {/* Layer 3: Cobwebs in all four corners */}
+      {/* Layer 3: Cobwebs in three corners (bottom-right removed to avoid blocking mute button) */}
       <Cobweb corner="top-left" />
       <Cobweb corner="top-right" />
       <Cobweb corner="bottom-left" />
-      <Cobweb corner="bottom-right" />
 
       {/* Layer 4: Flying bats */}
       <FlyingBats />

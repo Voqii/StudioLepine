@@ -28,15 +28,35 @@ export default function Cobweb({ corner }: CobwebProps) {
     { x: 80, y: 80 },
   ];
 
+  // Calculate transform and origin based on corner
+  const getTransformStyle = () => {
+    const transforms = [];
+    let origin = '';
+
+    if (!isLeft) {
+      transforms.push('scaleX(-1)');
+      origin = isTop ? 'top right' : 'bottom right';
+    } else {
+      origin = isTop ? 'top left' : 'bottom left';
+    }
+
+    if (!isTop) {
+      transforms.push('scaleY(-1)');
+    }
+
+    return {
+      transform: transforms.join(' '),
+      transformOrigin: origin,
+    };
+  };
+
   return (
     <motion.div
       className={`fixed ${isLeft ? 'left-0' : 'right-0'} ${isTop ? 'top-0' : 'bottom-0'} pointer-events-none z-50`}
       initial={{ opacity: 0, scale: 0.7 }}
       animate={{ opacity: 0.5, scale: 1 }}
       transition={{ duration: 1.5, delay: 0.3 }}
-      style={{
-        transform: `${isLeft ? '' : 'scaleX(-1)'} ${isTop ? '' : 'scaleY(-1)'}`,
-      }}
+      style={getTransformStyle()}
     >
       <svg
         width="300"
