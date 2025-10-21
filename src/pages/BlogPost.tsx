@@ -41,6 +41,50 @@ export default function BlogPost() {
       .join('\n');
   };
 
+  // Share functionality
+  const currentUrl = `https://lepine.biz/blog/${id}`;
+  const shareTitle = post.title;
+  const shareText = post.excerpt;
+
+  const handleShare = (platform: 'twitter' | 'linkedin' | 'native') => {
+    const encodedUrl = encodeURIComponent(currentUrl);
+    const encodedTitle = encodeURIComponent(shareTitle);
+    const encodedText = encodeURIComponent(shareText);
+
+    switch (platform) {
+      case 'twitter':
+        window.open(
+          `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+          '_blank',
+          'width=550,height=420'
+        );
+        break;
+      case 'linkedin':
+        window.open(
+          `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+          '_blank',
+          'width=550,height=420'
+        );
+        break;
+      case 'native':
+        if (navigator.share) {
+          navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: currentUrl,
+          }).catch(() => {
+            // User cancelled or error occurred
+          });
+        }
+        break;
+    }
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(currentUrl);
+    // You could add a toast notification here
+  };
+
   return (
     <PageTransition>
       <Breadcrumbs />
@@ -101,6 +145,41 @@ export default function BlogPost() {
                 {tag}
               </span>
             ))}
+          </div>
+
+          {/* Share buttons */}
+          <div className="mt-6 flex items-center gap-3">
+            <span className="font-mono text-sm text-black/60">Share:</span>
+            <button
+              onClick={() => handleShare('twitter')}
+              className="font-mono text-sm px-3 py-2 border border-sky/30 hover:bg-sky/10 transition-colors"
+              aria-label="Share on Twitter"
+            >
+              Twitter
+            </button>
+            <button
+              onClick={() => handleShare('linkedin')}
+              className="font-mono text-sm px-3 py-2 border border-sky/30 hover:bg-sky/10 transition-colors"
+              aria-label="Share on LinkedIn"
+            >
+              LinkedIn
+            </button>
+            <button
+              onClick={copyToClipboard}
+              className="font-mono text-sm px-3 py-2 border border-sky/30 hover:bg-sky/10 transition-colors"
+              aria-label="Copy link"
+            >
+              Copy Link
+            </button>
+            {navigator.share && (
+              <button
+                onClick={() => handleShare('native')}
+                className="font-mono text-sm px-3 py-2 border border-sky/30 hover:bg-sky/10 transition-colors"
+                aria-label="Share"
+              >
+                Share
+              </button>
+            )}
           </div>
         </motion.header>
 
