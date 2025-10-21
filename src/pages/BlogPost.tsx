@@ -170,7 +170,7 @@ export default function BlogPost() {
             >
               Copy Link
             </button>
-            {typeof navigator !== 'undefined' && navigator.share && (
+            {typeof navigator !== 'undefined' && typeof navigator.share === 'function' && (
               <button
                 onClick={() => handleShare('native')}
                 className="font-mono text-sm px-3 py-2 border border-sky/30 hover:bg-sky/10 transition-colors"
