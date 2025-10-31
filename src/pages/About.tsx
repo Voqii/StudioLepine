@@ -7,10 +7,10 @@ export default function About() {
   return (
     <PageTransition>
       <SEO
-        title="About - Studio Lepine"
-        description="Multi-disciplinary creator solving problems through code, design, and craftsmanship. Full-stack development, security research, and custom woodworking based in Saskatchewan, Canada."
+        title="About Cody Lepine - Studio Lepine | Multi-Disciplinary Creator"
+        description="Cody Lepine is a multi-disciplinary creator solving problems through code, design, and craftsmanship. Full-stack development, security research, and custom woodworking based in Saskatchewan, Canada."
         url="https://lepine.biz/about"
-        keywords="about, portfolio, developer, designer, security researcher, woodworker, Saskatchewan, Canada"
+        keywords="Cody Lepine, about, portfolio, developer, designer, security researcher, woodworker, Saskatchewan, Canada"
       />
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
