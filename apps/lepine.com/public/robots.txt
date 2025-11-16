@@ -1,0 +1,10 @@
+# robots.txt for lepine.biz
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lepine.biz/sitemap.xml
+
+# Crawl-delay (optional, be nice to smaller crawlers)
+Crawl-delay: 1
