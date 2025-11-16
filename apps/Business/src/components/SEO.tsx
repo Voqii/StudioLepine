@@ -20,35 +20,39 @@ export default function SEO({
   author = 'Cody Lepine',
 }: SEOProps) {
   useEffect(() => {
-    // Set title
-    document.title = title;
+    // Guard against SSR or missing document
+    if (typeof document === 'undefined') return;
 
-    // Helper function to set or update meta tag
-    const setMeta = (name: string, content: string, isProperty = false) => {
-      const attr = isProperty ? 'property' : 'name';
-      let element = document.querySelector(`meta[${attr}="${name}"]`);
+    try {
+      // Set title
+      document.title = title;
 
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(attr, name);
-        document.head.appendChild(element);
-      }
+      // Helper function to set or update meta tag
+      const setMeta = (name: string, content: string, isProperty = false) => {
+        const attr = isProperty ? 'property' : 'name';
+        let element = document.querySelector(`meta[${attr}="${name}"]`);
 
-      element.setAttribute('content', content);
-    };
+        if (!element) {
+          element = document.createElement('meta');
+          element.setAttribute(attr, name);
+          document.head.appendChild(element);
+        }
 
-    // Helper function to set or update link tag
-    const setLink = (rel: string, href: string) => {
-      let element = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
+        element.setAttribute('content', content);
+      };
 
-      if (!element) {
-        element = document.createElement('link');
-        element.setAttribute('rel', rel);
-        document.head.appendChild(element);
-      }
+      // Helper function to set or update link tag
+      const setLink = (rel: string, href: string) => {
+        let element = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
 
-      element.href = href;
-    };
+        if (!element) {
+          element = document.createElement('link');
+          element.setAttribute('rel', rel);
+          document.head.appendChild(element);
+        }
+
+        element.href = href;
+      };
 
     // Set basic meta tags
     setMeta('description', description);
@@ -116,7 +120,10 @@ export default function SEO({
       document.head.appendChild(scriptElement);
     }
 
-    scriptElement.textContent = JSON.stringify(structuredData);
+      scriptElement.textContent = JSON.stringify(structuredData);
+    } catch (error) {
+      console.error('SEO component error:', error);
+    }
   }, [title, description, image, url, type, keywords, author]);
 
   return null;
