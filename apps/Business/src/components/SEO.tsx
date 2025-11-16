@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 interface SEOProps {
   title?: string;
@@ -19,69 +19,105 @@ export default function SEO({
   keywords = 'Cody Lepine, Studio Lepine, web development, mobile development, security research, woodworking, UI/UX design, Saskatchewan, Canada',
   author = 'Cody Lepine',
 }: SEOProps) {
-  // Structured data for person/portfolio
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Cody Lepine',
-    url: 'https://lepine.biz',
-    image: 'https://lepine.biz/self.jpeg',
-    sameAs: [
-      'https://lepine.biz',
-    ],
-    jobTitle: 'Multi-Disciplinary Creator',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Studio Lepine',
+  useEffect(() => {
+    // Set title
+    document.title = title;
+
+    // Helper function to set or update meta tag
+    const setMeta = (name: string, content: string, isProperty = false) => {
+      const attr = isProperty ? 'property' : 'name';
+      let element = document.querySelector(`meta[${attr}="${name}"]`);
+
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attr, name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute('content', content);
+    };
+
+    // Helper function to set or update link tag
+    const setLink = (rel: string, href: string) => {
+      let element = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
+
+      if (!element) {
+        element = document.createElement('link');
+        element.setAttribute('rel', rel);
+        document.head.appendChild(element);
+      }
+
+      element.href = href;
+    };
+
+    // Set basic meta tags
+    setMeta('description', description);
+    setMeta('keywords', keywords);
+    setMeta('author', author);
+    setLink('canonical', url);
+
+    // Open Graph tags
+    setMeta('og:type', type, true);
+    setMeta('og:url', url, true);
+    setMeta('og:title', title, true);
+    setMeta('og:description', description, true);
+    setMeta('og:image', image, true);
+
+    // Twitter Card tags
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:url', url);
+    setMeta('twitter:title', title);
+    setMeta('twitter:description', description);
+    setMeta('twitter:image', image);
+
+    // Structured data for person/portfolio
+    const structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Cody Lepine',
       url: 'https://lepine.biz',
-    },
-    address: {
-      '@type': 'PostalAddress',
-      addressRegion: 'Saskatchewan',
-      addressCountry: 'CA',
-    },
-    email: 'cody@lepine.biz',
-    description: 'Multi-disciplinary creator specializing in design, security, development, woodworking, and systems engineering.',
-    knowsAbout: [
-      'Web Development',
-      'Mobile Development',
-      'Security Research',
-      'UI/UX Design',
-      'Woodworking',
-      'Systems Engineering',
-      'React',
-      'TypeScript',
-      'Swift',
-      'iOS Development',
-    ],
-  };
+      image: 'https://lepine.biz/self.jpeg',
+      sameAs: [
+        'https://lepine.biz',
+      ],
+      jobTitle: 'Multi-Disciplinary Creator',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Studio Lepine',
+        url: 'https://lepine.biz',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'Saskatchewan',
+        addressCountry: 'CA',
+      },
+      email: 'cody@lepine.biz',
+      description: 'Multi-disciplinary creator specializing in design, security, development, woodworking, and systems engineering.',
+      knowsAbout: [
+        'Web Development',
+        'Mobile Development',
+        'Security Research',
+        'UI/UX Design',
+        'Woodworking',
+        'Systems Engineering',
+        'React',
+        'TypeScript',
+        'Swift',
+        'iOS Development',
+      ],
+    };
 
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      <meta name="author" content={author} />
-      <link rel="canonical" href={url} />
+    // Add or update structured data script
+    let scriptElement = document.querySelector('script[type="application/ld+json"]');
 
-      {/* Open Graph */}
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+    if (!scriptElement) {
+      scriptElement = document.createElement('script');
+      scriptElement.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(scriptElement);
+    }
 
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+    scriptElement.textContent = JSON.stringify(structuredData);
+  }, [title, description, image, url, type, keywords, author]);
 
-      {/* Structured Data (JSON-LD) */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-    </Helmet>
-  );
+  return null;
 }
