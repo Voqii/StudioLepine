@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DOMPurify from 'dompurify';
 import PageTransition from '../components/PageTransition';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -104,22 +103,50 @@ export default function BlogPost() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Set meta tags using useEffect
+  useEffect(() => {
+    document.title = `${post.title} - Studio Lepine`;
+
+    const setMeta = (name: string, content: string, isProperty = false) => {
+      const attr = isProperty ? 'property' : 'name';
+      let element = document.querySelector(`meta[${attr}="${name}"]`);
+
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attr, name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute('content', content);
+    };
+
+    const setLink = (rel: string, href: string) => {
+      let element = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
+
+      if (!element) {
+        element = document.createElement('link');
+        element.setAttribute('rel', rel);
+        document.head.appendChild(element);
+      }
+
+      element.href = href;
+    };
+
+    setMeta('description', post.excerpt);
+    setLink('canonical', currentUrl);
+    setMeta('og:title', post.title, true);
+    setMeta('og:description', post.excerpt, true);
+    setMeta('og:type', 'article', true);
+    setMeta('og:url', currentUrl, true);
+    setMeta('og:image', 'https://lepine.biz/studiolepinelogo.png', true);
+    setMeta('article:published_time', post.date, true);
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', post.title);
+    setMeta('twitter:description', post.excerpt);
+  }, [post, currentUrl]);
+
   return (
     <PageTransition>
-      <Helmet>
-        <title>{post.title} - Studio Lepine</title>
-        <meta name="description" content={post.excerpt} />
-        <link rel="canonical" href={currentUrl} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={currentUrl} />
-        <meta property="og:image" content="https://lepine.biz/studiolepinelogo.png" />
-        <meta property="article:published_time" content={post.date} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={post.excerpt} />
-      </Helmet>
       <Breadcrumbs />
       <article className="max-w-3xl mx-auto px-6 py-16">
         {/* Back button */}
