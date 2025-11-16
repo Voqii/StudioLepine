@@ -7,10 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:biz": "npm run dev --workspace=apps/lepine.biz",
-    "dev:com": "npm run dev --workspace=apps/lepine.com",
-    "build:biz": "npm run build --workspace=apps/lepine.biz",
-    "build:com": "npm run build --workspace=apps/lepine.com",
+    "dev:biz": "npm run dev --workspace=apps/Business",
+    "dev:com": "npm run dev --workspace=apps/Personal",
+    "build:biz": "npm run build --workspace=apps/Business",
+    "build:com": "npm run build --workspace=apps/Personal",
     "build:all": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "test": "npm run test --workspaces --if-present"
