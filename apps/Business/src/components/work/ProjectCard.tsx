@@ -120,7 +120,7 @@ export default function ProjectCard({
       )}
 
       {/* Project Content */}
-      <div className="p-8">
+      <div className="p-8 relative">
         <div className="flex items-start justify-between mb-4">
           <span className="text-xs uppercase tracking-wider text-black/50">
             {project.subcategory}
@@ -145,6 +145,22 @@ export default function ProjectCard({
             </span>
           ))}
         </div>
+
+        {/* External Link Arrow */}
+        {project.href && (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-4 right-4 text-black/40 hover:text-black/80 transition-colors"
+            onClick={(e) => e.stopPropagation()}
+            aria-label={`Visit ${project.title}`}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        )}
       </div>
     </motion.div>
   );

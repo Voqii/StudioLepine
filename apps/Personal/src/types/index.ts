@@ -8,6 +8,7 @@ export interface Project {
   featured?: boolean;
   imageUrl?: string;
   images?: string[];
+  href?: string;
 }
 
 export interface BlogPost {
